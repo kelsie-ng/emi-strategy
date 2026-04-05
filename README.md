@@ -65,91 +65,62 @@ The goal is to make Learneris the **path of least resistance** for schools seeki
 4. **Full-stack ownership** — Content + Platform + Training + Assessment in one vendor
 5. **YCCD compliance tracking** — Element-by-element standard mapping (QD 3439) unmatched by competitors
 
-## Product Roadmap for EMI Dominance
+## Product Roadmap: Extend, Don't Rebuild
 
-### Phase 1: EMI-Specific Products (Q2-Q3 2026)
+> See [docs/product-alignment.md](docs/product-alignment.md) for the full mapping of every EMI need to existing Learneris capabilities.
 
-#### 1. EMI Teacher Companion App
-**What**: AI assistant that helps non-English-specialist teachers deliver lessons using English alongside Vietnamese.
-**Why**: The #1 challenge cited in the HCMC De An is teacher capacity — most non-English teachers have A1-A2 proficiency. They need real-time support, not just training.
-**Features**:
-- Real-time bilingual lesson script generation (Vietnamese content -> bilingual CLIL format)
-- Pronunciation guide with audio for subject-specific vocabulary (Math, Science terms)
-- Classroom phrase bank with context-appropriate English expressions
-- Lesson plan converter: takes existing Vietnamese lesson plans, adds English integration layer
+Nearly every EMI requirement maps to something already built. The strategy is to **configure, extend, and rebrand** — not start from scratch.
 
-#### 2. EMI Readiness Assessment Platform
-**What**: Diagnostic tool for schools to measure their EMI readiness against the 3-level framework defined in QD 2371.
-**Why**: The policy defines Levels 1-3 but schools have no tool to self-assess or track progress toward each level.
-**Features**:
-- School-level readiness scorecard (infrastructure, teacher capacity, curriculum, leadership)
-- Teacher English proficiency diagnostic (aligned to VNEFR 6-level framework)
-- Gap analysis with recommended interventions
-- Progress tracking dashboard for Department of Education reporting
-- Automated periodic reporting (matching the monitoring requirement in the De An)
+### What We Already Have (Ready for EMI)
 
-#### 3. Bilingual Content Engine (CLIL Module)
-**What**: Extension of lesson-agent to produce CLIL content — Math, Science, and other subjects taught partially or fully in English.
-**Why**: Step 3 of the HCMC roadmap explicitly calls for bilingual digital content repositories. De An 5695 (the predecessor program) proved CLIL works in HCMC over 10 years.
-**Features**:
-- Input: Vietnamese curriculum standard -> Output: bilingual lesson package (slides, worksheets, teacher script)
-- Adjustable English ratio (20%, 50%, 80%, 100%) matching school's EMI level
-- Subject vocabulary glossaries auto-generated per lesson
-- Aligned to GDPT 2018 curriculum standards
+| EMI Need | Existing Product | What It Already Does |
+|----------|-----------------|---------------------|
+| Online learning platform | **LMS** | Full teacher+student platform, 6 content block types, AI quiz gen, analytics, EN/VI bilingual UI |
+| Teacher training | **PD-Slides** | 8 training modules, quiz engine with leaderboard, bilingual certificates, EMI school variant already exists in activity data |
+| Teacher certification | **Credits-Management** | Training pipeline with PENDING→APPROVED→ISSUED workflow, TeacherQualification model, 12 API endpoints |
+| AI-powered tools | **ai-gateway** | Multi-model router (GPT-4o, Claude, Gemini), credit billing, failover — all products route through this |
+| Content at scale | **lesson-agent** | 5-step pipeline (study guide→slides→teaching guide→quiz→interactive), $0.10/lesson, YAML extension system |
+| Bilingual content | **AI-Course-fresh** | EN/VN toggle, EMI school variant, HCAI Engine bilingual mode (`biText(vn,en)`), 80+ lessons with bilingual infrastructure |
+| Interactive activities | **AI-Course-fresh** | 25+ activity HTML files, 7 interactive types (sorting, matching, quiz, flashcard, fill-blank, sequence, memory), HCAI Engine with 20+ slide types |
+| School onboarding | **Credits-Management** | Parse contract PDF → create org → users → classes → assign credits → Drive upload. CRM with pipeline stages. |
+| School admin portal | **Credits-Management Portal** | Self-service: user mgmt, class mgmt, usage stats, CSV export, import pipeline, temp passwords |
+| Mobile access | **Mobile app** | Capacitor 8 (iOS + Android) |
+| Monitoring/reporting | **LMS + Credits-Mgmt** | Analytics dashboards, credit reports, usage rollups, finance module |
+| Content creation SaaS | **creator.learnery** | AI course pipeline (title→objectives→outline→slides→PPTX), 7+ output languages, embed routes |
 
-### Phase 2: Platform Expansion (Q4 2026 - Q1 2027)
+### What to Extend (Weeks, Not Months)
 
-#### 4. EMI School Dashboard
-**What**: Administrative platform for school leaders and Department of Education to monitor EMI implementation.
-**Why**: The policy requires periodic monitoring and reporting. No tool exists for this.
-**Features**:
-- School-level EMI progress metrics
-- Teacher development tracking (proficiency scores, training completion, certification)
-- Student English exposure hours tracking
-- Compliance reporting (auto-generated for SGDDT submission)
-- Benchmarking against city/district averages
+| Extension | Base Product | Work Required | Effort |
+|-----------|-------------|---------------|--------|
+| CLIL bilingual content generation | lesson-agent | Add `language: bilingual` mode + CLIL YAML flows (`clil-math.yaml`, `clil-science.yaml`) | 2-3 weeks |
+| EMI teacher PD modules | PD-Slides | New content modules: "CLIL Methodology", "Classroom English", "Teaching Math in English" — using existing quiz/activity/cert infrastructure | 2 weeks |
+| English practice AI chatbots | AI-Course-fresh | New chatbot personas (conversation partner, vocab drill, scenario practice) — same Azure OpenAI endpoint, new system prompts | 1 week |
+| EMI course templates in LMS | LMS | Pre-configured course structures with CLIL content blocks | 1 week |
+| Org-level analytics | LMS | Extend existing teacher-scoped analytics to school-wide view | 1-2 weeks |
+| EMI metrics in School Portal | Credits-Management | Add EMI readiness scorecard, English exposure tracking, DoE report export | 2 weeks |
+| Wire qualification gating | Credits-Management | Connect existing TeacherQualification → class assignment (planned Phase 4) | 1 week |
 
-#### 5. Student English Immersion Environment
-**What**: AI-powered practice environment where students interact with subject content in English.
-**Why**: The policy's vision is that English becomes a language of daily school life, not just a subject. Students need practice beyond the classroom.
-**Features**:
-- AI conversation partner for subject-specific discussion (Math problem solving in English, Science experiment descriptions)
-- Gamified vocabulary building for CLIL subjects
-- Reading comprehension with bilingual scaffolding
-- Speaking practice with pronunciation feedback
-- Progress aligned to VNEFR framework levels
+### Only 2 Net-New Builds
 
-#### 6. EMI Community & Knowledge Hub
-**What**: Professional learning community for EMI teachers across Vietnam.
-**Why**: Teachers implementing EMI are isolated — no peer network exists for sharing CLIL strategies and materials.
-**Features**:
-- Curated CLIL resource library (lesson plans, activities, assessments)
-- Teacher forums organized by subject and grade level
-- Best practice showcases from pilot schools
-- Expert Q&A (partnered with university advisors)
-
-### Phase 3: Scale & Ecosystem (2027+)
-
-#### 7. EMI Certification & Accreditation System
-**What**: Formal certification program for schools achieving EMI levels, and for teachers qualified to deliver EMI instruction.
-**Why**: The policy defines levels but no certification body exists. First mover becomes the standard.
-
-#### 8. Southeast Asia Expansion
-**What**: Localize the EMI platform for Philippines, Indonesia, Thailand — countries with similar English integration ambitions.
-**Why**: Kelsie's Quipper/Recruit background in PH/ID + proven Vietnam model = rapid expansion template.
+| New Build | Effort | Approach |
+|-----------|--------|----------|
+| **EMI Readiness Assessment** | Small (1-2 weeks) | School self-assessment questionnaire using existing PD-Slides quiz engine or LMS assignment system, mapped to QD 2371's 3-level framework |
+| **CLIL Content Templates** | Medium (2-3 weeks) | New YAML prompt flows for lesson-agent: Vietnamese curriculum standard → bilingual lesson package with adjustable English ratio (20-100%) |
 
 ## Go-to-Market Strategy
 
 ### Immediate (April-May 2026)
-- [ ] Deploy Hanoi Standardized Kit to 50+ target schools
-- [ ] Engage HCMC SGDDT through existing KDI/school relationships
-- [ ] Submit EMI Readiness Assessment as a free tool for pilot schools
-- [ ] Position for HCMC's May 14, 2026 registration deadline (per SGDDT-GDMN 2551)
+- [ ] Deploy Hanoi Standardized Kit to target schools
+- [ ] Engage HCMC SGDDT through KDI/school relationships
+- [ ] Offer free EMI Readiness Assessment to pilot schools
+- [ ] Position for HCMC's May 14, 2026 registration deadline (SGDDT-GDMN 2551)
+- [ ] Create 2-3 EMI PD modules in PD-Slides (reuse existing format)
 
 ### Near-term (Q3-Q4 2026)
-- [ ] Launch EMI Teacher Companion App MVP with 5 pilot schools
-- [ ] Secure HCMC SGDDT endorsement for Learneris as EMI technology partner
-- [ ] Expand Hanoi standardized kit model to HCMC and other provinces
+- [ ] Ship CLIL bilingual mode in lesson-agent
+- [ ] Add EMI chatbot personas to AI-Course-fresh
+- [ ] Launch EMI course templates in LMS with 5 pilot schools
+- [ ] Add EMI metrics to School Admin Portal
 - [ ] Present at YC W27 with EMI as the wedge story
 
 ### Medium-term (2027)
@@ -175,8 +146,9 @@ The goal is to make Learneris the **path of least resistance** for schools seeki
 
 ```
 emi-strategy/
-├── README.md                    # This file
+├── README.md                    # This file — overview and roadmap
 ├── docs/
+│   ├── product-alignment.md     # Existing product → EMI need mapping (START HERE)
 │   ├── policy-analysis.md       # Detailed policy breakdown
 │   ├── competitive-landscape.md # Competitor analysis
 │   ├── product-specs/           # Feature specifications
