@@ -524,6 +524,36 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .int-pf-bar span:nth-child(2){background:#fcd34d}
 .int-pf-bar span:nth-child(3){background:#86efac}
 .int-prod-frame img{width:100%;height:90px;display:block;object-fit:cover;object-position:top}
+/* Adapt mock UI (illustrative, no screenshot available) */
+.int-adapt-mock{background:linear-gradient(180deg,#fafdfc,#fff)}
+.int-adapt-body{padding:10px 12px;height:90px;display:flex;flex-direction:column;gap:5px;justify-content:center}
+.int-adapt-diff{display:flex;align-items:center;gap:3px;font-size:8px;color:var(--mut);font-weight:700}
+.int-adapt-diff em{margin-left:4px;color:var(--pur);font-style:italic}
+.int-adapt-diff-dot{width:6px;height:6px;border-radius:50%;background:#e5e7eb}
+.int-adapt-diff-dot.on{background:var(--pur);box-shadow:0 0 0 1.5px rgba(168,85,247,0.2)}
+.int-adapt-q{font-size:10px;font-weight:700;color:var(--txt);font-family:'SF Mono',Monaco,monospace}
+.int-adapt-opts{display:flex;flex-direction:column;gap:3px}
+.int-adapt-opt{padding:3px 6px;border:1px solid #e5e7eb;border-radius:4px;font-size:9px;color:var(--mut);background:#fff}
+.int-adapt-correct{border-color:var(--pur);background:var(--p50);color:var(--txt);font-weight:700}
+/* Flagship hero: Chương trình Học cùng AI */
+.int-flagship{display:grid;grid-template-columns:2fr 1fr;gap:16px;padding:16px 20px;margin-bottom:14px;border:1.5px solid var(--teal);border-radius:12px;background:linear-gradient(135deg,var(--t50) 0%,#fff 70%);box-shadow:0 2px 12px rgba(13,148,136,0.08)}
+.int-flag-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;color:var(--teal);background:#fff;border:1px solid var(--t200);padding:4px 10px;border-radius:14px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
+.int-flag-badge em{text-transform:none;font-style:italic;color:var(--mut);font-weight:500}
+.int-flag-title{font-size:22px;font-weight:900;color:var(--txt);margin:0 0 6px 0;letter-spacing:-0.015em;line-height:1.1}
+.int-flag-sub{font-size:12px;color:var(--mut);line-height:1.5;margin:0 0 10px 0}
+.int-flag-sub strong{color:var(--teal);font-weight:700}
+.int-flag-creds{display:flex;flex-direction:column;gap:5px}
+.int-flag-cred{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:var(--txt);line-height:1.4}
+.int-flag-cred i[data-lucide]{color:var(--teal);flex-shrink:0;margin-top:2px}
+.int-flag-cred strong{color:var(--teal);font-weight:700}
+.int-flag-right{display:flex;flex-direction:column;justify-content:center;padding-left:14px;border-left:1px dashed var(--t200)}
+.int-flag-stack-lbl{font-size:9px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.int-flag-stack{display:flex;flex-direction:column;gap:5px}
+.int-flag-pill{display:block;padding:6px 10px;background:#fff;border:1px solid var(--t200);border-radius:6px;font-size:11px;color:var(--txt);text-align:center}
+.int-flag-pill strong{color:var(--teal)}
+.int-stack-lbl{font-size:9px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px 4px}
+.int-stack-lbl em{text-transform:none;font-style:italic;font-weight:500}
+@media(max-width:768px){.int-flagship{grid-template-columns:1fr}.int-flag-right{border-left:none;border-top:1px dashed var(--t200);padding-left:0;padding-top:10px}}
 /* === NV 08 leaderboard with bars === */
 .mk-awards{padding:11px 13px}
 .mk-aw-hd{font-size:9px;font-weight:800;color:var(--amb);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:4px;padding-bottom:5px;border-bottom:1px dashed #e5e7eb}
@@ -1889,22 +1919,53 @@ const INTRO_DATA=[
     </div>
     <div class="int-callout"><i data-lucide="quote"></i><p>Nền tảng <strong>chuyên biệt cho giáo dục Việt Nam</strong> — khung CLIL 4C, song ngữ Việt-Anh chuẩn sư phạm, sẵn sàng đáp ứng khung QĐ 2371.</p></div>
   `},
-  {tag:'SẢN PHẨM · Products',title:'3 sản phẩm chính của Learneris',content:`
+  {tag:'SẢN PHẨM · Products',title:'Sản phẩm chính của Learneris',content:`
+    <div class="int-flagship">
+      <div class="int-flag-left">
+        <div class="int-flag-badge"><i data-lucide="award" style="width:10px;height:10px"></i> SẢN PHẨM CHỦ LỰC · <em>Flagship</em></div>
+        <h3 class="int-flag-title">Chương trình Học cùng AI</h3>
+        <p class="int-flag-sub">Chương trình giáo dục AI Literacy cho học sinh Việt Nam từ <strong>Lớp 1 → Lớp 12</strong> — triển khai tại trường, tích hợp khung GDPT 2018.</p>
+        <div class="int-flag-creds">
+          <div class="int-flag-cred"><i data-lucide="shield-check" style="width:11px;height:11px"></i><span><strong>VNIES thẩm định khung</strong> chương trình Lớp 1 → Lớp 12</span></div>
+          <div class="int-flag-cred"><i data-lucide="check-circle" style="width:11px;height:11px"></i><span><strong>Sở GD&ĐT TP.HCM thẩm định</strong> chi tiết cho khối THCS · Tiểu học và THPT đang thẩm định</span></div>
+          <div class="int-flag-cred"><i data-lucide="zap" style="width:11px;height:11px"></i><span>Đang <strong>triển khai thực tế</strong> tại trường THCS</span></div>
+        </div>
+      </div>
+      <div class="int-flag-right">
+        <div class="int-flag-stack-lbl">Xây dựng trên nền tảng kỹ thuật:</div>
+        <div class="int-flag-stack">
+          <span class="int-flag-pill"><strong>Learneris</strong></span>
+          <span class="int-flag-pill"><strong>Studio</strong></span>
+          <span class="int-flag-pill"><strong>Adapt</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="int-stack-lbl">NỀN TẢNG KỸ THUẬT · <em>Underlying platforms</em></div>
     <div class="int-prods">
       <a href="https://learneris.com" target="_blank" class="int-prod int-p-core">
         <div class="int-p-hd"><div class="int-p-logo"><span>L</span></div><div><div class="int-p-name">Learneris</div><div class="int-p-url">learneris.com</div></div></div>
         <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/learneris-com-section-features.png" alt="Learneris features" loading="lazy"></div>
-        <p class="int-p-desc"><strong>14+ AI tools</strong> cho giáo viên — soạn bài, tạo nội dung, đánh giá học sinh.</p>
+        <p class="int-p-desc"><strong>14+ AI tools soạn bài & đánh giá</strong> — GV chọn <strong>Yêu Cầu Cần Đạt (YCCD)</strong> trong khung <strong>GDPT 2018</strong> để AI tạo đúng loại học liệu.</p>
       </a>
       <a href="https://studio.learneris.com" target="_blank" class="int-prod int-p-studio">
         <div class="int-p-hd"><div class="int-p-logo int-lg-dark"><span>L</span></div><div><div class="int-p-name">Learneris Studio</div><div class="int-p-url">studio.learneris.com</div></div></div>
         <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/studio-learneris-hero.png" alt="Learneris Studio" loading="lazy"></div>
-        <p class="int-p-desc"><strong>AI Content Production</strong> cho nhà xuất bản — chương trình → nội dung xuất bản trong vài phút.</p>
+        <p class="int-p-desc"><strong>AI Content Production quy mô lớn</strong> — cho nhà xuất bản và trường học <strong>chuẩn hóa học liệu số</strong>, human-in-the-loop.</p>
       </a>
       <a href="https://adapt.learneris.com" target="_blank" class="int-prod int-p-adapt">
         <div class="int-p-hd"><div class="int-p-logo int-lg-pur"><span>A</span></div><div><div class="int-p-name">Learneris Adapt</div><div class="int-p-url">adapt.learneris.com</div></div></div>
-        <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/learneris-com-section-programs.png" alt="Learneris Adapt" loading="lazy"></div>
-        <p class="int-p-desc"><strong>Adaptive Testing Engine</strong> — AI chấm điểm + câu hỏi tự điều chỉnh độ khó.</p>
+        <div class="int-prod-frame int-adapt-mock">
+          <div class="int-pf-bar"><span></span><span></span><span></span></div>
+          <div class="int-adapt-body">
+            <div class="int-adapt-diff"><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot on"></span><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot"></span><em>Medium</em></div>
+            <div class="int-adapt-q">If x² + 4x = 12, what is x?</div>
+            <div class="int-adapt-opts">
+              <div class="int-adapt-opt">A. x = 2</div>
+              <div class="int-adapt-opt int-adapt-correct">B. x = 2 or x = -6 ✓</div>
+            </div>
+          </div>
+        </div>
+        <p class="int-p-desc"><strong>Adaptive Testing Engine</strong> — AI chấm điểm + câu hỏi <strong>tự điều chỉnh độ khó</strong> theo năng lực HS.</p>
       </a>
     </div>
   `},
