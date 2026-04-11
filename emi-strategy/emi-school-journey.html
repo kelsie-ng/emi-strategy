@@ -110,6 +110,29 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .r-tt{background:#d1fae5;color:#065f46}
 .r-gv{background:#e0e7ff;color:#3730a3}
 .r-it{background:#fce7f3;color:#9f1239}
+/* Survey animation styles */
+.svy-row{transition:background .3s ease}
+.svy-row.active{background:#fef9c3;box-shadow:inset 3px 0 0 #f59e0b}
+.svy-row.done{background:#f0fdf4}
+.svy-row.done td{color:var(--mut)}
+.svy-row.done td:nth-child(2){text-decoration:line-through;text-decoration-color:#a7f3d0}
+.svy-check{text-align:center}
+.svy-row.done .svy-check::after{content:"✓";color:var(--grn);font-weight:900;font-size:13px;display:inline-block;animation:checkPop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes checkPop{0%{transform:scale(0) rotate(-45deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.svy-cursor{position:absolute;width:18px;height:18px;top:0;left:0;opacity:0;pointer-events:none;transition:top .45s cubic-bezier(.4,0,.2,1),left .45s cubic-bezier(.4,0,.2,1),opacity .2s;z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25))}
+.svy-cursor i[data-lucide]{width:18px;height:18px;stroke-width:2.5;color:#1e293b;fill:#fff}
+.svy-cursor.on{opacity:1}
+.svy-cursor.click::after{content:"";position:absolute;top:9px;left:9px;width:0;height:0;border:2px solid var(--teal);border-radius:50%;transform:translate(-50%,-50%);animation:cursorPulse .5s ease-out}
+@keyframes cursorPulse{0%{width:0;height:0;opacity:1}100%{width:28px;height:28px;opacity:0}}
+.svy-panel{transition:opacity .35s ease,transform .35s ease}
+.svy-panel.fade-out{opacity:0;transform:scale(0.97)}
+.svy-panel.fade-in{opacity:1;transform:scale(1)}
+.svy-opt{display:block;padding:6px 10px;border:1.5px solid #e5e7eb;border-radius:6px;color:var(--txt);background:#fff;cursor:pointer;transition:all .2s;line-height:1.3}
+.svy-opt.sel{border-color:var(--teal);background:#ecfdf5;color:var(--teal);font-weight:700;box-shadow:0 1px 4px rgba(13,148,136,0.15)}
+.svy-submit{width:100%;padding:7px 12px;background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;transition:all .2s;font-family:inherit}
+.svy-submit:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(13,148,136,0.25)}
+.svy-submit.flash{animation:submitFlash .4s ease}
+@keyframes submitFlash{0%,100%{transform:scale(1)}50%{transform:scale(0.96);filter:brightness(1.2)}}
 .scr.on .card,.scr.on .st{animation:cardIn .4s cubic-bezier(.4,0,.2,1) backwards}
 .scr.on .card:nth-child(2),.scr.on .st:nth-child(2){animation-delay:.06s}
 .scr.on .card:nth-child(3),.scr.on .st:nth-child(3){animation-delay:.12s}
@@ -322,49 +345,66 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 <!-- ===== 3. ASSESS ===== -->
 <div class="scr" data-s="3">
   <h2 class="sec-t"><i data-lucide="clipboard-list"></i> Khảo Sát &amp; Đánh Giá 7 Tiêu Chí EMI</h2>
-  <p class="sec-s">Theo QĐ 2371/QĐ-TTg — 30 câu hỏi, thang 4 mức. Hệ thống tự phân công đúng người trả lời.</p>
+  <p class="sec-s">Theo QĐ 2371/QĐ-TTg — 30 câu hỏi, thang 4 mức. Hệ thống tự phân công đúng người trả lời, tổng hợp thành kết quả radar.</p>
   <div class="g2">
     <!-- LEFT: Survey assignment matrix -->
-    <div>
+    <div style="position:relative">
       <div class="mock-browser">
         <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url">lms.learneris.com/emi/survey/assign</span></div>
         <div class="mock-body" style="padding:10px 12px">
           <p style="font-weight:700;font-size:12px;margin-bottom:6px;display:flex;align-items:center;gap:5px"><i data-lucide="users" style="width:13px;height:13px;color:var(--teal)"></i> Phân công khảo sát</p>
           <table class="svy-tbl">
-            <thead><tr><th style="width:18px">#</th><th>Tiêu chí</th><th style="width:40px;text-align:center">Trọng số</th><th>Người trả lời</th></tr></thead>
-            <tbody>
-              <tr class="svy-row reveal-item"><td>1</td><td>Môi trường ngôn ngữ</td><td class="wt">10%</td><td><span class="r-tag r-ht">Hiệu trưởng</span> <span class="r-tag r-tt">Tổ trưởng EMI</span></td></tr>
-              <tr class="svy-row reveal-item"><td>2</td><td>Chương trình &amp; Dạy học</td><td class="wt hi">25%</td><td><span class="r-tag r-ht">Hiệu trưởng</span> <span class="r-tag r-pht">Phó HT Chuyên môn</span></td></tr>
-              <tr class="svy-row reveal-item"><td>3</td><td>Học liệu</td><td class="wt">10%</td><td><span class="r-tag r-tt">Tổ trưởng EMI</span> <span class="r-tag r-gv">Giáo viên bộ môn</span></td></tr>
-              <tr class="svy-row reveal-item"><td>4</td><td>Số hóa &amp; AI</td><td class="wt">15%</td><td><span class="r-tag r-pht">Phó Hiệu trưởng</span> <span class="r-tag r-it">Cán bộ CNTT</span></td></tr>
-              <tr class="svy-row reveal-item"><td>5</td><td>Đội ngũ (CB, GV, HS)</td><td class="wt hi">25%</td><td><span class="r-tag r-ht">Hiệu trưởng</span> <span class="r-tag r-gv">Giáo viên tự đánh giá CEFR</span></td></tr>
-              <tr class="svy-row reveal-item"><td>6</td><td>Hợp tác quốc tế</td><td class="wt">10%</td><td><span class="r-tag r-ht">Hiệu trưởng</span></td></tr>
-              <tr class="svy-row reveal-item"><td>7</td><td>Nghiên cứu khoa học &amp; công nghệ</td><td class="wt">5%</td><td><span class="r-tag r-tt">Tổ trưởng EMI</span> <span class="r-tag r-gv">Giáo viên có dự án</span></td></tr>
+            <thead><tr><th style="width:16px">#</th><th>Tiêu chí</th><th style="width:40px;text-align:center">Trọng số</th><th>Người trả lời</th><th style="width:16px;text-align:center"></th></tr></thead>
+            <tbody id="svyTbody">
+              <tr class="svy-row" data-row="1"><td>1</td><td>Môi trường ngôn ngữ</td><td class="wt">10%</td><td><span class="r-tag r-ht">Hiệu trưởng</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="2"><td>2</td><td>Chương trình &amp; Dạy học</td><td class="wt hi">25%</td><td><span class="r-tag r-pht">Phó HT CM</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="3"><td>3</td><td>Học liệu</td><td class="wt">10%</td><td><span class="r-tag r-tt">Tổ trưởng EMI</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="4"><td>4</td><td>Số hóa &amp; AI</td><td class="wt">15%</td><td><span class="r-tag r-it">Cán bộ CNTT</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="5"><td>5</td><td>Đội ngũ (CB, GV, HS)</td><td class="wt hi">25%</td><td><span class="r-tag r-ht">Hiệu trưởng</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="6"><td>6</td><td>Hợp tác quốc tế</td><td class="wt">10%</td><td><span class="r-tag r-ht">Hiệu trưởng</span></td><td class="svy-check"></td></tr>
+              <tr class="svy-row" data-row="7"><td>7</td><td>Nghiên cứu khoa học &amp; công nghệ</td><td class="wt">5%</td><td><span class="r-tag r-tt">Tổ trưởng EMI</span></td><td class="svy-check"></td></tr>
             </tbody>
           </table>
           <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid #f1f5f9">
-            <div style="flex:1"><div class="pt"><div class="pf fg anim-fill" data-w="100%"></div></div></div>
-            <span style="font-size:11px;font-weight:700;color:var(--grn);white-space:nowrap">3/3 người đã trả lời · 30/30 câu hỏi</span>
+            <div style="flex:1"><div class="pt"><div class="pf fg" id="svyProgressBar" style="width:0%;transition:width .5s ease"></div></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--teal);white-space:nowrap" id="svyProgressLabel">0/7 tiêu chí</span>
           </div>
         </div>
       </div>
-      <!-- Sample question preview -->
-      <div class="card reveal-item" style="margin-top:8px;padding:10px 12px;border-left:3px solid var(--teal)">
-        <div style="font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px">Ví dụ — Tiêu chí 1 / Câu 1</div>
-        <p style="font-size:12px;font-weight:600;margin-bottom:5px">Mức độ song ngữ trong bảng hiệu, bảng tin của trường?</p>
-        <div style="display:flex;flex-direction:column;gap:3px;font-size:11px">
-          <div style="color:var(--mut)">○ A. Chỉ tiếng Việt</div>
-          <div style="color:var(--mut)">○ B. &lt;30% song ngữ</div>
-          <div style="color:var(--teal);font-weight:700">● C. 30-80% song ngữ <span style="color:var(--mut);font-weight:400">→ 2/3 điểm</span></div>
-          <div style="color:var(--mut)">○ D. 100% song ngữ + chủ đề</div>
+      <!-- Cursor that clicks rows -->
+      <div class="svy-cursor" id="svyCursor"><i data-lucide="mouse-pointer-2"></i></div>
+    </div>
+    <!-- RIGHT: Dynamic survey form (morphs to radar result at end) -->
+    <div>
+      <!-- PANEL A: Survey form -->
+      <div class="mock-browser svy-panel" id="svyFormPanel">
+        <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url" id="svyFormUrl">lms.learneris.com/emi/survey</span></div>
+        <div class="mock-body" style="padding:12px 14px;min-height:280px">
+          <div id="svyFormEmpty" style="text-align:center;padding:40px 20px;color:var(--mut);font-size:12px">
+            <i data-lucide="clipboard-list" style="width:32px;height:32px;color:#cbd5e1;margin-bottom:8px"></i>
+            <p style="font-weight:600">Đang chờ người trả lời khảo sát...</p>
+          </div>
+          <div id="svyFormContent" style="display:none">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <div style="display:flex;align-items:center;gap:6px"><span class="tag tt" style="font-size:10px" id="svyFormTc">Tiêu chí 1</span><span style="font-size:10px;color:var(--mut)" id="svyFormQnum">Câu 1/3</span></div>
+              <span class="r-tag r-ht" id="svyFormRole" style="font-size:9px">Hiệu trưởng</span>
+            </div>
+            <p style="font-size:12px;font-weight:700;margin-bottom:8px;line-height:1.4" id="svyFormQ">Câu hỏi...</p>
+            <div id="svyFormOpts" style="display:flex;flex-direction:column;gap:5px;font-size:11px;margin-bottom:10px"></div>
+            <button class="svy-submit" id="svyFormSubmit">
+              <i data-lucide="send" style="width:11px;height:11px"></i> Nộp câu trả lời
+            </button>
+            <div id="svyFormDone" style="display:none;text-align:center;padding:4px;font-size:11px;color:var(--grn);font-weight:700;margin-top:6px">
+              <i data-lucide="check-circle" style="width:12px;height:12px"></i> Đã lưu · Điểm: <span id="svyFormScore">2</span>/3
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- RIGHT: Results -->
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <div class="mock-browser">
+      <!-- PANEL B: Radar result (hidden until all surveys done) -->
+      <div class="mock-browser svy-panel" id="svyResultPanel" style="display:none">
         <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url">lms.learneris.com/emi/result</span></div>
         <div class="mock-body" style="text-align:center;padding:8px">
+          <p style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:5px"><i data-lucide="bar-chart-3" style="width:12px;height:12px"></i> Tổng hợp kết quả</p>
           <svg width="240" height="195" viewBox="0 0 260 210" style="margin:0 auto;display:block">
             <defs><style>text.rl{font-size:11px;font-weight:600;font-family:Inter,sans-serif}</style></defs>
             <g transform="translate(130,105)">
@@ -387,14 +427,6 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
           <div style="font-size:28px;font-weight:900;color:var(--teal);line-height:1"><span class="count-target">0</span><span style="font-size:13px;color:var(--mut)">/100</span></div>
           <div class="tag tt" style="margin-top:3px;font-size:10px">Đang tiến tới Mức Độ 1</div>
         </div>
-      </div>
-      <div class="card reveal-item" style="padding:8px 12px;border-left:3px solid var(--red)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span class="tag tr" style="font-size:10px">Ưu tiên</span><strong style="font-size:11px">5. Đội ngũ — 45%</strong></div>
-        <p style="font-size:11px;color:var(--mut);line-height:1.35">15/45 giáo viên đạt CEFR B2+. Cần bồi dưỡng CLIL cho 30 giáo viên.</p>
-      </div>
-      <div class="card reveal-item" style="padding:8px 12px;border-left:3px solid var(--red)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span class="tag tr" style="font-size:10px">Ưu tiên</span><strong style="font-size:11px">6. Hợp tác quốc tế — 30%</strong></div>
-        <p style="font-size:11px;color:var(--mut);line-height:1.35">Chưa có đối tác hay chương trình trao đổi.</p>
       </div>
     </div>
   </div>
@@ -778,6 +810,125 @@ function detectLevelFromName(name){
   return null;
 }
 
+// === SURVEY DATA (7 criteria × sample question) ===
+const SURVEY_Qs=[
+  {tc:1,tcName:'Môi trường ngôn ngữ',qNum:'Câu 1/3',role:'Hiệu trưởng',roleCls:'r-ht',
+   q:'Mức độ song ngữ trong bảng hiệu, bảng tin của trường?',
+   opts:['A. Chỉ tiếng Việt','B. Dưới 30% song ngữ','C. 30-80% song ngữ','D. 100% song ngữ + chủ đề'],
+   answer:2,score:2},
+  {tc:2,tcName:'Chương trình & Dạy học',qNum:'Câu 1/6',role:'Phó HT Chuyên môn',roleCls:'r-pht',
+   q:'Trường đã thí điểm CLIL cho bao nhiêu môn nội dung?',
+   opts:['A. Chưa thí điểm','B. 1 môn (Toán hoặc KHTN)','C. 2-3 môn','D. ≥4 môn trên mọi khối'],
+   answer:1,score:1},
+  {tc:3,tcName:'Học liệu',qNum:'Câu 1/4',role:'Tổ trưởng EMI',roleCls:'r-tt',
+   q:'Trường có tài liệu CLIL chuẩn cho môn nội dung không?',
+   opts:['A. Chưa có','B. Một số tài liệu tự phát','C. Tài liệu Cambridge/Oxford','D. Bộ tài liệu chuẩn BGDĐT'],
+   answer:1,score:1},
+  {tc:4,tcName:'Số hóa & AI',qNum:'Câu 1/5',role:'Cán bộ CNTT',roleCls:'r-it',
+   q:'Trường sử dụng nền tảng công nghệ nào cho EMI?',
+   opts:['A. Chưa có LMS','B. LMS miễn phí (Google Classroom)','C. LMS chuyên dụng','D. Đa nền tảng + AI tích hợp'],
+   answer:3,score:3},
+  {tc:5,tcName:'Đội ngũ',qNum:'Câu 1/7',role:'Hiệu trưởng',roleCls:'r-ht',
+   q:'Tỷ lệ giáo viên đạt trình độ CEFR B2 trở lên?',
+   opts:['A. Dưới 20%','B. 20-40%','C. 40-70%','D. Trên 70%'],
+   answer:1,score:1},
+  {tc:6,tcName:'Hợp tác quốc tế',qNum:'Câu 1/3',role:'Hiệu trưởng',roleCls:'r-ht',
+   q:'Trường có đối tác nước ngoài hoặc chương trình trao đổi?',
+   opts:['A. Chưa có','B. Đang xây dựng','C. 1-2 đối tác','D. ≥3 đối tác, trao đổi thường xuyên'],
+   answer:0,score:0},
+  {tc:7,tcName:'Nghiên cứu khoa học & công nghệ',qNum:'Câu 1/2',role:'Tổ trưởng EMI',roleCls:'r-tt',
+   q:'Trường có dự án nghiên cứu liên quan đến EMI/CLIL?',
+   opts:['A. Chưa có','B. 1 dự án cá nhân giáo viên','C. Dự án cấp trường','D. Công bố quốc tế'],
+   answer:1,score:1}
+];
+
+function showSurveyQuestion(i){
+  const q=SURVEY_Qs[i];if(!q)return;
+  document.getElementById('svyFormEmpty').style.display='none';
+  document.getElementById('svyFormContent').style.display='block';
+  document.getElementById('svyFormDone').style.display='none';
+  document.getElementById('svyFormSubmit').style.display='inline-flex';
+  document.getElementById('svyFormTc').textContent='Tiêu chí '+q.tc;
+  document.getElementById('svyFormQnum').textContent=q.qNum;
+  const roleEl=document.getElementById('svyFormRole');
+  roleEl.textContent=q.role;
+  roleEl.className='r-tag '+q.roleCls;
+  document.getElementById('svyFormQ').textContent=q.q;
+  document.getElementById('svyFormUrl').textContent=`lms.learneris.com/emi/survey/tieu-chi-${q.tc}`;
+  const optsEl=document.getElementById('svyFormOpts');
+  optsEl.innerHTML=q.opts.map(o=>`<div class="svy-opt">○ ${o}</div>`).join('');
+}
+
+function answerSurveyQuestion(i){
+  const q=SURVEY_Qs[i];if(!q)return;
+  const opts=document.querySelectorAll('#svyFormOpts .svy-opt');
+  const chosen=opts[q.answer];
+  if(chosen){chosen.classList.add('sel');chosen.textContent='● '+q.opts[q.answer].substring(3);}
+}
+
+function submitSurveyQuestion(i){
+  const q=SURVEY_Qs[i];if(!q)return;
+  const btn=document.getElementById('svyFormSubmit');
+  btn.classList.add('flash');
+  setTimeout(()=>{
+    btn.style.display='none';
+    const done=document.getElementById('svyFormDone');
+    document.getElementById('svyFormScore').textContent=q.score;
+    done.style.display='block';
+    lucide.createIcons();
+  },400);
+}
+
+function moveCursorToRow(n){
+  const cursor=document.getElementById('svyCursor');
+  const row=document.querySelector(`.svy-row[data-row="${n}"]`);
+  if(!cursor||!row)return;
+  const containerRect=cursor.parentElement.getBoundingClientRect();
+  const rowRect=row.getBoundingClientRect();
+  const x=rowRect.left-containerRect.left+rowRect.width*0.5;
+  const y=rowRect.top-containerRect.top+rowRect.height*0.5;
+  cursor.style.left=x+'px';
+  cursor.style.top=y+'px';
+  cursor.classList.add('on');
+}
+
+function pulseCursor(){
+  const cursor=document.getElementById('svyCursor');
+  if(!cursor)return;
+  cursor.classList.add('click');
+  setTimeout(()=>cursor.classList.remove('click'),500);
+}
+
+function highlightRow(n,active){
+  const row=document.querySelector(`.svy-row[data-row="${n}"]`);
+  if(!row)return;
+  row.classList.toggle('active',active);
+}
+
+function markRowDone(n){
+  const row=document.querySelector(`.svy-row[data-row="${n}"]`);
+  if(!row)return;
+  row.classList.remove('active');
+  row.classList.add('done');
+}
+
+function updateSvyProgress(done){
+  const pct=Math.round((done/7)*100);
+  document.getElementById('svyProgressBar').style.width=pct+'%';
+  document.getElementById('svyProgressLabel').textContent=`${done}/7 tiêu chí`;
+}
+
+function resetSurveyState(){
+  document.querySelectorAll('.svy-row').forEach(r=>r.classList.remove('active','done'));
+  document.getElementById('svyCursor')?.classList.remove('on','click');
+  document.getElementById('svyFormEmpty').style.display='block';
+  document.getElementById('svyFormContent').style.display='none';
+  document.getElementById('svyFormPanel').style.display='block';
+  document.getElementById('svyFormPanel').classList.remove('fade-out');
+  document.getElementById('svyResultPanel').style.display='none';
+  updateSvyProgress(0);
+}
+
 // === ANIMATION ENGINE ===
 
 // Staggered reveal: find all .reveal-item in a screen and show them sequentially
@@ -890,13 +1041,45 @@ function runScreenAnim(n,scr){
       revealStagger(scr,250,typingEnd+1400);
       animateFills(scr,typingEnd+1600);
       break;}
-    case 3:
-      animateRadar(scr,400);
-      revealStagger(scr,200,800);
-      // Count up score
-      const scoreEl=scr.querySelector('.count-target');
-      if(scoreEl)countUp(scoreEl,50,1000,600);
-      break;
+    case 3:{
+      resetSurveyState();
+      // Sequential survey animation: for each of 7 criteria
+      // click row → show question → highlight answer → submit → mark done → next
+      const STEP=1400; // ms per criterion
+      const START=600;
+      for(let i=0;i<7;i++){
+        const rowN=i+1;
+        const t0=START+i*STEP;
+        // T+0: move cursor to row
+        setTimeout(()=>moveCursorToRow(rowN),t0);
+        // T+350: click pulse + activate row
+        setTimeout(()=>{pulseCursor();highlightRow(rowN,true);},t0+350);
+        // T+500: show question on right
+        setTimeout(()=>{showSurveyQuestion(i);lucide.createIcons();},t0+500);
+        // T+850: select answer
+        setTimeout(()=>answerSurveyQuestion(i),t0+850);
+        // T+1100: submit
+        setTimeout(()=>submitSurveyQuestion(i),t0+1100);
+        // T+1300: mark row done, update progress
+        setTimeout(()=>{markRowDone(rowN);updateSvyProgress(rowN);},t0+1300);
+      }
+      // After all 7: fade survey form → show radar result panel
+      const afterAll=START+7*STEP+200;
+      setTimeout(()=>{
+        document.getElementById('svyFormPanel').classList.add('fade-out');
+        document.getElementById('svyCursor').classList.remove('on');
+      },afterAll);
+      setTimeout(()=>{
+        document.getElementById('svyFormPanel').style.display='none';
+        const result=document.getElementById('svyResultPanel');
+        result.style.display='block';
+        result.classList.add('fade-in');
+        animateRadar(scr,200);
+        const scoreEl=result.querySelector('.count-target');
+        if(scoreEl)countUp(scoreEl,50,1000,400);
+        lucide.createIcons();
+      },afterAll+400);
+      break;}
     case 4:
       revealStagger(scr,150,100);
       animateFills(scr,400);
