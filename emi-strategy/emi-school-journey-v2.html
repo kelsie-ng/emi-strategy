@@ -365,8 +365,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .nv-p-num{width:46px;height:46px;border-radius:9px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;font-variant-numeric:tabular-nums}
 .nv-panel.partner .nv-p-num{background:#94a3b8}
 .nv-p-task{flex:1;font-size:19px;font-weight:800;color:var(--txt);line-height:1.2;letter-spacing:-0.01em}
-.nv-p-src{font-size:12px;color:var(--mut);font-style:italic;margin-bottom:14px;padding-left:58px}
-.nv-p-divider{height:1px;background:#e5e7eb;margin-bottom:14px}
+.nv-p-src{font-size:12px;color:var(--mut);font-style:italic;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e5e7eb}
 .nv-p-product{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .nv-p-bd{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border-radius:5px;background:var(--teal);color:#fff}
 .nv-panel.partner .nv-p-bd{background:#64748b}
@@ -1823,12 +1822,7 @@ function renderNvPanel(idx){
   const d=NV_DATA[idx];if(!d)return;
   panel.className='nv-panel';
   panel.innerHTML=`
-    <div class="nv-p-hd">
-      <div class="nv-p-num">${d.num}</div>
-      <div class="nv-p-task">${d.task}</div>
-    </div>
     <div class="nv-p-src">${d.src}</div>
-    <div class="nv-p-divider"></div>
     <div class="nv-p-product">
       <div class="nv-p-bd">${d.badge}</div>
       <div class="nv-p-name">${d.name}</div>
