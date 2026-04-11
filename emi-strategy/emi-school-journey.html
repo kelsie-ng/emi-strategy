@@ -27,7 +27,14 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .logo::after{content:'';position:absolute;top:4px;right:4px;width:5px;height:5px;background:var(--t200);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 .hdr-t{font-weight:700;font-size:15px;letter-spacing:-0.01em}
-.hdr-b{margin-left:auto;font-size:12px;color:var(--teal);background:var(--t50);padding:4px 12px;border-radius:20px;font-weight:600;border:1px solid var(--t100);text-transform:uppercase;letter-spacing:0.05em}
+.hdr-b{font-size:12px;color:var(--teal);background:var(--t50);padding:4px 12px;border-radius:20px;font-weight:600;border:1px solid var(--t100);text-transform:uppercase;letter-spacing:0.05em}
+.hnav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.hnav .hnc{font-size:11px;color:var(--mut);font-weight:600;min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+.hnav .hnb{display:inline-flex;align-items:center;gap:4px;border:1px solid #e2e8f0;background:#fff;color:#334155;font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;cursor:pointer;transition:all .15s}
+.hnav .hnb:hover:not(:disabled){background:#f8fafc;border-color:#cbd5e1}
+.hnav .hnb:disabled{opacity:.4;cursor:not-allowed}
+.hnav .hnb.p{background:var(--teal);color:#fff;border-color:var(--teal)}
+.hnav .hnb.p:hover:not(:disabled){background:#0f766e}
 
 .sbar{position:fixed;top:var(--hh);left:0;right:0;z-index:99;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.04);height:var(--sh);padding:0 16px;display:flex;align-items:center;overflow-x:auto}
 .steps{display:flex;align-items:center;justify-content:center;max-width:780px;margin:0 auto;width:100%}
@@ -168,6 +175,11 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
   <div class="logo"><span>L</span></div>
   <span class="hdr-t">Learneris EMI</span>
   <span class="hdr-b">Interactive Demo</span>
+  <div class="hnav">
+    <button class="hnb" id="hPrevBtn" onclick="prev()" disabled aria-label="Trước"><i data-lucide="arrow-left" style="width:13px;height:13px"></i></button>
+    <span class="hnc" id="hNavC">1 / 8</span>
+    <button class="hnb p" id="hNextBtn" onclick="next()">Tiếp <i data-lucide="arrow-right" style="width:13px;height:13px"></i></button>
+  </div>
 </header>
 
 <div class="sbar"><div class="steps" id="stepBar"></div></div>
@@ -648,10 +660,15 @@ function goTo(n){
   const scr=document.querySelector(`[data-s="${n}"]`);
   scr.classList.add('on');
   document.getElementById('prevBtn').disabled=n===1;
+  document.getElementById('hPrevBtn').disabled=n===1;
   const nb=document.getElementById('nextBtn');
   nb.innerHTML=n===T?'<i data-lucide="check" style="width:14px;height:14px"></i> Hoàn Tất':'Tiếp Theo <i data-lucide="arrow-right" style="width:14px;height:14px"></i>';
   nb.disabled=n===T;
+  const hnb=document.getElementById('hNextBtn');
+  hnb.innerHTML=n===T?'<i data-lucide="check" style="width:13px;height:13px"></i> Xong':'Tiếp <i data-lucide="arrow-right" style="width:13px;height:13px"></i>';
+  hnb.disabled=n===T;
   document.getElementById('navC').textContent=`${n} / ${T}`;
+  document.getElementById('hNavC').textContent=`${n} / ${T}`;
   buildS();document.querySelector('.wrap').scrollTop=0;
   lucide.createIcons();
   // Run screen animations
