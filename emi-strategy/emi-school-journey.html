@@ -28,13 +28,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 @keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 .hdr-t{font-weight:700;font-size:15px;letter-spacing:-0.01em}
 .hdr-b{font-size:12px;color:var(--teal);background:var(--t50);padding:4px 12px;border-radius:20px;font-weight:600;border:1px solid var(--t100);text-transform:uppercase;letter-spacing:0.05em}
-.hnav{margin-left:auto;display:flex;align-items:center;gap:6px}
-.hnav .hnc{font-size:11px;color:var(--mut);font-weight:600;min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
-.hnav .hnb{display:inline-flex;align-items:center;gap:4px;border:1px solid #e2e8f0;background:#fff;color:#334155;font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;cursor:pointer;transition:all .15s}
-.hnav .hnb:hover:not(:disabled){background:#f8fafc;border-color:#cbd5e1}
-.hnav .hnb:disabled{opacity:.4;cursor:not-allowed}
-.hnav .hnb.p{background:var(--teal);color:#fff;border-color:var(--teal)}
-.hnav .hnb.p:hover:not(:disabled){background:#0f766e}
 
 .sbar{position:fixed;top:var(--hh);left:0;right:0;z-index:99;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.04);height:var(--sh);padding:0 16px;display:flex;align-items:center;overflow-x:auto}
 .steps{display:flex;align-items:center;justify-content:center;max-width:780px;margin:0 auto;width:100%}
@@ -56,8 +49,9 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 
 .bnav{position:fixed;bottom:0;left:0;right:0;height:var(--nh);background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(0,0,0,0.05);padding:0 20px;display:flex;align-items:center;justify-content:space-between;z-index:100}
 .nb{padding:8px 22px;border-radius:var(--rs);font-weight:600;font-size:13px;cursor:pointer;border:none;transition:all .2s}
-.nb.p{background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;box-shadow:0 2px 8px rgba(13,148,136,0.2)}
-.nb.p:hover{box-shadow:0 4px 16px rgba(13,148,136,0.3);transform:translateY(-1px)}
+.nb.p{background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;box-shadow:0 4px 16px rgba(13,148,136,0.35);padding:10px 28px;font-size:14px;animation:nudge 2.4s ease-in-out infinite}
+.nb.p:hover{box-shadow:0 6px 20px rgba(13,148,136,0.45);transform:translateY(-1px);animation:none}
+@keyframes nudge{0%,85%,100%{transform:translateX(0)}90%{transform:translateX(3px)}95%{transform:translateX(0)}}
 .nb.s{background:#fff;color:var(--txt);border:1.5px solid #e5e7eb}
 .nb.s:hover{background:#fafafa;border-color:#d1d5db}
 .nb:disabled{opacity:.3;cursor:not-allowed;transform:none!important;box-shadow:none!important}
@@ -175,11 +169,6 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
   <div class="logo"><span>L</span></div>
   <span class="hdr-t">Learneris EMI</span>
   <span class="hdr-b">Interactive Demo</span>
-  <div class="hnav">
-    <button class="hnb" id="hPrevBtn" onclick="prev()" disabled aria-label="Trước"><i data-lucide="arrow-left" style="width:13px;height:13px"></i></button>
-    <span class="hnc" id="hNavC">1 / 8</span>
-    <button class="hnb p" id="hNextBtn" onclick="next()">Tiếp <i data-lucide="arrow-right" style="width:13px;height:13px"></i></button>
-  </div>
 </header>
 
 <div class="sbar"><div class="steps" id="stepBar"></div></div>
@@ -192,7 +181,6 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
     <div class="tag tt" style="margin-bottom:10px">QD 2371/QD-TTg &middot; NQ 71-NQ/TW</div>
     <h1 style="font-size:clamp(24px,3.8vw,38px);font-weight:900;letter-spacing:-0.04em;line-height:1.1;margin-bottom:10px">Đưa Tiếng Anh Thành<br><span style="background:linear-gradient(135deg,var(--teal),var(--pur));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Ngôn Ngữ Thứ Hai</span></h1>
     <p style="font-size:14px;color:var(--mut);line-height:1.6;max-width:500px;margin:0 auto 16px">Learneris giúp trường triển khai EMI theo lộ trình quốc gia — đánh giá, bồi dưỡng GV, tạo nội dung song ngữ, giám sát báo cáo.</p>
-    <button class="cta" onclick="goTo(2)"><i data-lucide="arrow-right"></i> Bắt Đầu Hành Trình EMI</button>
   </div>
   <!-- CLIL Explainer: What, Why, How -->
   <div class="clil-box reveal-item" style="margin-top:14px">
@@ -349,7 +337,6 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span class="tag tg" style="font-size:11px">Tốt</span><strong style="font-size:11px">4. Số hóa & AI — 75%</strong></div>
         <p style="font-size:12px;color:var(--mut);line-height:1.4">Hạ tầng CNTT tốt. Đã dùng nền tảng Learneris.</p>
       </div>
-      <button class="cta" style="width:100%;justify-content:center;padding:9px;font-size:13px" onclick="goTo(4)"><i data-lucide="arrow-right"></i> Lộ Trình Cải Thiện</button>
     </div>
   </div>
   <div class="pb"><i data-lucide="zap"></i> Powered by: LMS Assessment &middot; Khung 7 tiêu chí QD 2371</div>
@@ -660,15 +647,10 @@ function goTo(n){
   const scr=document.querySelector(`[data-s="${n}"]`);
   scr.classList.add('on');
   document.getElementById('prevBtn').disabled=n===1;
-  document.getElementById('hPrevBtn').disabled=n===1;
   const nb=document.getElementById('nextBtn');
   nb.innerHTML=n===T?'<i data-lucide="check" style="width:14px;height:14px"></i> Hoàn Tất':'Tiếp Theo <i data-lucide="arrow-right" style="width:14px;height:14px"></i>';
   nb.disabled=n===T;
-  const hnb=document.getElementById('hNextBtn');
-  hnb.innerHTML=n===T?'<i data-lucide="check" style="width:13px;height:13px"></i> Xong':'Tiếp <i data-lucide="arrow-right" style="width:13px;height:13px"></i>';
-  hnb.disabled=n===T;
   document.getElementById('navC').textContent=`${n} / ${T}`;
-  document.getElementById('hNavC').textContent=`${n} / ${T}`;
   buildS();document.querySelector('.wrap').scrollTop=0;
   lucide.createIcons();
   // Run screen animations
