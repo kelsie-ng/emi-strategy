@@ -25,7 +25,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           skip_app_build: true
-          app_location: "/"
+          app_location: "emi-strategy"
           output_location: ""
 
   close_pull_request:
