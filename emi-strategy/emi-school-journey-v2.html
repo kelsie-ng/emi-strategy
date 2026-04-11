@@ -517,6 +517,14 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 /* === Screen 1.2 product UI snapshot === */
 .int-prod-shot{margin:8px -12px 8px -12px;height:96px;overflow:hidden;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;background:#f8fafc}
 .int-prod-shot img{width:100%;height:auto;display:block;object-fit:cover;object-position:top}
+/* Browser-frame variant: makes any UI screenshot read as "this is the actual app" — works for both light and dark themes */
+.int-prod-frame{margin:10px 0 10px 0;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.int-pf-bar{height:14px;background:linear-gradient(180deg,#f8fafc,#f1f5f9);border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:4px;padding:0 8px}
+.int-pf-bar span{width:6px;height:6px;border-radius:50%;background:#cbd5e1}
+.int-pf-bar span:nth-child(1){background:#fca5a5}
+.int-pf-bar span:nth-child(2){background:#fcd34d}
+.int-pf-bar span:nth-child(3){background:#86efac}
+.int-prod-frame img{width:100%;height:90px;display:block;object-fit:cover;object-position:top}
 /* === NV 08 leaderboard with bars === */
 .mk-awards{padding:11px 13px}
 .mk-aw-hd{font-size:9px;font-weight:800;color:var(--amb);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:4px;padding-bottom:5px;border-bottom:1px dashed #e5e7eb}
@@ -1847,17 +1855,17 @@ const INTRO_DATA=[
     <div class="int-prods">
       <a href="https://learneris.com" target="_blank" class="int-prod int-p-core">
         <div class="int-p-hd"><div class="int-p-logo"><span>L</span></div><div><div class="int-p-name">Learneris</div><div class="int-p-url">learneris.com</div></div></div>
-        <div class="int-prod-shot"><img src="assets/screenshots/learneris-com-section-features.png" alt="Learneris features" loading="lazy"></div>
+        <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/learneris-com-section-features.png" alt="Learneris features" loading="lazy"></div>
         <p class="int-p-desc"><strong>14+ AI tools</strong> cho giáo viên — soạn bài, tạo nội dung, đánh giá học sinh.</p>
       </a>
       <a href="https://studio.learneris.com" target="_blank" class="int-prod int-p-studio">
         <div class="int-p-hd"><div class="int-p-logo int-lg-dark"><span>L</span></div><div><div class="int-p-name">Learneris Studio</div><div class="int-p-url">studio.learneris.com</div></div></div>
-        <div class="int-prod-shot"><img src="assets/screenshots/studio-learneris-section-features.png" alt="Learneris Studio" loading="lazy"></div>
+        <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/studio-learneris-hero.png" alt="Learneris Studio" loading="lazy"></div>
         <p class="int-p-desc"><strong>AI Content Production</strong> cho nhà xuất bản — chương trình → nội dung xuất bản trong vài phút.</p>
       </a>
       <a href="https://adapt.learneris.com" target="_blank" class="int-prod int-p-adapt">
         <div class="int-p-hd"><div class="int-p-logo int-lg-pur"><span>A</span></div><div><div class="int-p-name">Learneris Adapt</div><div class="int-p-url">adapt.learneris.com</div></div></div>
-        <div class="int-prod-shot"><img src="assets/screenshots/learneris-com-section-programs.png" alt="Learneris Adapt" loading="lazy"></div>
+        <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/learneris-com-section-programs.png" alt="Learneris Adapt" loading="lazy"></div>
         <p class="int-p-desc"><strong>Adaptive Testing Engine</strong> — AI chấm điểm + câu hỏi tự điều chỉnh độ khó.</p>
       </a>
     </div>
