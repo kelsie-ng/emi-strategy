@@ -85,6 +85,19 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .fi:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.08)}
 select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 .fl{font-size:12px;font-weight:600;color:var(--mut);margin-bottom:5px;display:block;text-transform:uppercase;letter-spacing:0.05em}
+.lvl-chips{display:flex;gap:6px;flex-wrap:wrap}
+.lvl-chip{padding:7px 12px;border:1.5px solid #e5e7eb;background:#fff;border-radius:8px;font-size:12px;font-weight:600;color:var(--txt);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+.lvl-chip:hover{border-color:var(--tl);background:#f0fdfa}
+.lvl-chip.active{background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;border-color:var(--teal);box-shadow:0 2px 8px rgba(13,148,136,0.25)}
+.lvl-chip.pulse{animation:chipPulse 1s ease}
+@keyframes chipPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08);box-shadow:0 4px 16px rgba(13,148,136,0.4)}}
+.class-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}
+.cbx{display:flex;align-items:center;gap:6px;padding:7px 10px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:12px;cursor:pointer;transition:all .15s;background:#fff}
+.cbx:hover{border-color:var(--tl);background:#f0fdfa}
+.cbx input{accent-color:var(--teal);margin:0}
+.cbx.on{border-color:var(--teal);background:#f0fdfa;color:var(--teal);font-weight:600}
+.detect-hint{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--teal);margin-top:6px;padding:5px 10px;background:var(--g50);border-radius:6px;opacity:0;transition:opacity .3s}
+.detect-hint.show{opacity:1}
 .scr.on .card,.scr.on .st{animation:cardIn .4s cubic-bezier(.4,0,.2,1) backwards}
 .scr.on .card:nth-child(2),.scr.on .st:nth-child(2){animation-delay:.06s}
 .scr.on .card:nth-child(3),.scr.on .st:nth-child(3){animation-delay:.12s}
@@ -237,24 +250,33 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 
 <!-- ===== 2. ONBOARD ===== -->
 <div class="scr" data-s="2">
-  <h2 class="sec-t"><i data-lucide="school"></i> Thiết Lập Trường Học</h2>
-  <p class="sec-s">Nhập thông tin, import danh sách và tự động tạo tổ chức trên Learneris.</p>
+  <h2 class="sec-t"><i data-lucide="school"></i> Thiết Lập Tổ Chức</h2>
+  <p class="sec-s">Chọn cấp học, nhập tên trường — hệ thống tự động nhận diện và thiết lập cấu trúc lớp.</p>
   <div class="g2">
     <div>
-      <div style="margin-bottom:10px"><label class="fl">Tên Trường</label><div class="fi type-field" style="min-height:36px"></div></div>
+      <div style="margin-bottom:10px">
+        <label class="fl">Cấp Học / Đơn Vị</label>
+        <div class="lvl-chips" id="lvlChips">
+          <button class="lvl-chip" data-lvl="mn" onclick="selectLevel('mn',true)">Mầm Non</button>
+          <button class="lvl-chip" data-lvl="th" onclick="selectLevel('th',true)">Tiểu Học</button>
+          <button class="lvl-chip" data-lvl="thcs" onclick="selectLevel('thcs',true)">THCS</button>
+          <button class="lvl-chip" data-lvl="thpt" onclick="selectLevel('thpt',true)">THPT</button>
+          <button class="lvl-chip" data-lvl="so" onclick="selectLevel('so',true)">Sở / Phòng GD</button>
+        </div>
+      </div>
+      <div style="margin-bottom:10px"><label class="fl" id="nameLabel">Tên Trường</label><div class="fi type-field" style="min-height:36px"></div></div>
       <div style="margin-bottom:10px"><label class="fl">Phường / Xã</label><input class="fi" value="Phường Bến Nghé, TP.HCM" readonly></div>
       <div style="margin-bottom:10px">
-        <label class="fl">Khối lớp triển khai</label>
-        <div style="display:flex;gap:12px;font-size:13px">
-          <label style="display:flex;align-items:center;gap:5px"><input type="checkbox" style="accent-color:var(--teal)"> Lớp 6</label>
-          <label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked style="accent-color:var(--teal)"> Lớp 7</label>
-          <label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked style="accent-color:var(--teal)"> Lớp 8</label>
-          <label style="display:flex;align-items:center;gap:5px"><input type="checkbox" style="accent-color:var(--teal)"> Lớp 9</label>
+        <label class="fl" id="classLabel">Khối / Lớp Triển Khai</label>
+        <div class="class-grid" id="classGrid"></div>
+        <div class="detect-hint" id="detectHint">
+          <i data-lucide="sparkles" style="width:11px;height:11px"></i>
+          <span>Đã nhận diện cấp học: <strong id="detectedLvl">—</strong></span>
         </div>
       </div>
       <!-- Mockup: file upload -->
       <div class="click-target" style="border:2px solid var(--grn);border-radius:var(--rs);padding:14px;background:var(--g50);color:var(--grn);font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px">
-        <i data-lucide="file-check" style="width:18px;height:18px"></i> roster_thcs_nguyen_du.xlsx — đã tải lên
+        <i data-lucide="file-check" style="width:18px;height:18px"></i> <span id="rosterName">roster.xlsx — đã tải lên</span>
       </div>
     </div>
     <div>
@@ -271,14 +293,14 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
         </div>
       </div>
       <div class="g3" style="margin-bottom:10px">
-        <div class="st"><div class="sv">45</div><div class="slb">Giáo viên</div></div>
-        <div class="st"><div class="sv">620</div><div class="slb">Học sinh</div></div>
-        <div class="st"><div class="sv">18</div><div class="slb">Lớp</div></div>
+        <div class="st"><div class="sv" id="statGV">45</div><div class="slb" id="statGVLbl">Giáo viên</div></div>
+        <div class="st"><div class="sv" id="statHS">620</div><div class="slb" id="statHSLbl">Học sinh</div></div>
+        <div class="st"><div class="sv" id="statLop">18</div><div class="slb" id="statLopLbl">Lớp</div></div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         <span class="tag tg reveal-item" style="display:flex;align-items:center;gap:3px"><i data-lucide="check-circle" style="width:10px;height:10px"></i> Tổ chức đã tạo</span>
-        <span class="tag tg reveal-item" style="display:flex;align-items:center;gap:3px"><i data-lucide="check-circle" style="width:10px;height:10px"></i> 45 GV</span>
-        <span class="tag tg reveal-item" style="display:flex;align-items:center;gap:3px"><i data-lucide="check-circle" style="width:10px;height:10px"></i> 620 HS</span>
+        <span class="tag tg reveal-item" style="display:flex;align-items:center;gap:3px"><i data-lucide="check-circle" style="width:10px;height:10px"></i> <span id="badgeGV">45 GV</span></span>
+        <span class="tag tg reveal-item" style="display:flex;align-items:center;gap:3px"><i data-lucide="check-circle" style="width:10px;height:10px"></i> <span id="badgeHS">620 HS</span></span>
       </div>
     </div>
   </div>
@@ -657,6 +679,56 @@ function goTo(n){
   if(!screenAnimated[n]){screenAnimated[n]=true;runScreenAnim(n,scr);}
 }
 
+// === LEVEL / SCHOOL DATA ===
+const LEVELS = {
+  mn:   { name:'Mầm Non',       classes:['Nhà Trẻ','Mẫu Giáo Bé','Mẫu Giáo Nhỡ','Mẫu Giáo Lớn'], defaults:[1,2], stats:{gv:28,hs:380,lop:12,lopLbl:'Lớp'}, sample:'Trường Mầm Non Hoa Sen', roster:'roster_mn_hoa_sen.xlsx', nameLbl:'Tên Trường', classLbl:'Khối / Nhóm Lớp' },
+  th:   { name:'Tiểu Học',      classes:['Lớp 1','Lớp 2','Lớp 3','Lớp 4','Lớp 5'],             defaults:[0,1,2],   stats:{gv:52,hs:980,lop:28,lopLbl:'Lớp'}, sample:'Trường Tiểu Học Lê Ngọc Hân', roster:'roster_th_le_ngoc_han.xlsx', nameLbl:'Tên Trường', classLbl:'Khối / Lớp Triển Khai' },
+  thcs: { name:'THCS',          classes:['Lớp 6','Lớp 7','Lớp 8','Lớp 9'],                       defaults:[1,2],     stats:{gv:45,hs:620,lop:18,lopLbl:'Lớp'}, sample:'Trường THCS Nguyễn Du', roster:'roster_thcs_nguyen_du.xlsx', nameLbl:'Tên Trường', classLbl:'Khối / Lớp Triển Khai' },
+  thpt: { name:'THPT',          classes:['Lớp 10','Lớp 11','Lớp 12'],                            defaults:[0,1],     stats:{gv:68,hs:1240,lop:32,lopLbl:'Lớp'}, sample:'Trường THPT Lê Quý Đôn', roster:'roster_thpt_le_quy_don.xlsx', nameLbl:'Tên Trường', classLbl:'Khối / Lớp Triển Khai' },
+  so:   { name:'Sở / Phòng GD', classes:['Mầm Non','Tiểu Học','THCS','THPT'],                    defaults:[0,1,2,3], stats:{gv:1915,hs:50300,lop:520,lopLbl:'Trường'}, sample:'Sở GD&ĐT TPHCM', roster:'danh_sach_truong_tphcm.xlsx', nameLbl:'Tên Đơn Vị', classLbl:'Cấp Học Quản Lý' }
+};
+
+function renderClassGrid(lvl){
+  const cfg=LEVELS[lvl];if(!cfg)return;
+  const grid=document.getElementById('classGrid');if(!grid)return;
+  grid.innerHTML=cfg.classes.map((c,i)=>{
+    const on=cfg.defaults.includes(i);
+    return `<label class="cbx${on?' on':''}"><input type="checkbox" ${on?'checked':''}> ${c}</label>`;
+  }).join('');
+  // Labels + stats
+  document.getElementById('classLabel').textContent=cfg.classLbl;
+  document.getElementById('nameLabel').textContent=cfg.nameLbl;
+  document.getElementById('statGV').textContent=cfg.stats.gv;
+  document.getElementById('statHS').textContent=cfg.stats.hs.toLocaleString('vi-VN');
+  document.getElementById('statLop').textContent=cfg.stats.lop;
+  document.getElementById('statLopLbl').textContent=cfg.stats.lopLbl;
+  document.getElementById('statGVLbl').textContent=lvl==='so'?'Giáo viên (toàn Sở)':'Giáo viên';
+  document.getElementById('statHSLbl').textContent=lvl==='so'?'Học sinh (toàn Sở)':'Học sinh';
+  document.getElementById('badgeGV').textContent=`${cfg.stats.gv} ${lvl==='so'?'GV':'GV'}`;
+  document.getElementById('badgeHS').textContent=`${cfg.stats.hs.toLocaleString('vi-VN')} HS`;
+  document.getElementById('rosterName').textContent=`${cfg.roster} — đã tải lên`;
+}
+
+function selectLevel(lvl,manual){
+  document.querySelectorAll('.lvl-chip').forEach(c=>c.classList.toggle('active',c.dataset.lvl===lvl));
+  renderClassGrid(lvl);
+  const detect=document.getElementById('detectHint');
+  if(manual){
+    document.getElementById('detectedLvl').textContent=LEVELS[lvl].name+' (chọn thủ công)';
+    detect.classList.add('show');
+  }
+}
+
+function detectLevelFromName(name){
+  const n=name.toLowerCase();
+  if(n.includes('mầm non')||n.includes('mam non'))return'mn';
+  if(n.includes('tiểu học')||n.includes('tieu hoc'))return'th';
+  if(n.includes('thcs')||n.includes('trung học cơ sở'))return'thcs';
+  if(n.includes('thpt')||n.includes('trung học phổ thông'))return'thpt';
+  if(n.includes('sở gd')||n.includes('so gd')||n.includes('phòng gd'))return'so';
+  return null;
+}
+
 // === ANIMATION ENGINE ===
 
 // Staggered reveal: find all .reveal-item in a screen and show them sequentially
@@ -733,17 +805,42 @@ function runScreenAnim(n,scr){
     case 1:
       revealStagger(scr,180,100);
       break;
-    case 2:
-      // Type school name, then reveal success items
+    case 2:{
+      // Reset: clear selection and class grid
+      document.querySelectorAll('.lvl-chip').forEach(c=>c.classList.remove('active','pulse'));
+      document.getElementById('classGrid').innerHTML='';
+      document.getElementById('detectHint').classList.remove('show');
+      document.getElementById('detectedLvl').textContent='—';
+      // Default labels
+      document.getElementById('nameLabel').textContent='Tên Trường';
+      document.getElementById('classLabel').textContent='Khối / Lớp Triển Khai';
+      // Start typing school name (THCS sample)
       const nameField=scr.querySelector('.type-field');
-      if(nameField)typeInto(nameField,'Trường THCS Nguyễn Du',45,300);
+      const schoolName='Trường THCS Nguyễn Du';
+      if(nameField)typeInto(nameField,schoolName,50,400);
+      // After typing finishes (~400+50*18 = 1300ms), detect level
+      const typingEnd=400+schoolName.length*50+200;
+      setTimeout(()=>{
+        const lvl=detectLevelFromName(schoolName);
+        if(lvl){
+          // Pulse the matching chip
+          const chip=document.querySelector(`.lvl-chip[data-lvl="${lvl}"]`);
+          if(chip){chip.classList.add('active','pulse');setTimeout(()=>chip.classList.remove('pulse'),1000);}
+          // Show detection hint
+          document.getElementById('detectedLvl').textContent=LEVELS[lvl].name+' — tự động';
+          document.getElementById('detectHint').classList.add('show');
+          // Render class grid with a small delay for visual effect
+          setTimeout(()=>renderClassGrid(lvl),300);
+          lucide.createIcons();
+        }
+      },typingEnd);
       // Click on file upload area
       const dropzone=scr.querySelector('.click-target');
-      if(dropzone)clickAt(dropzone,dropzone.offsetWidth/2,dropzone.offsetHeight/2,1800);
+      if(dropzone)clickAt(dropzone,dropzone.offsetWidth/2,dropzone.offsetHeight/2,typingEnd+900);
       // Reveal success badges
-      revealStagger(scr,250,2400);
-      animateFills(scr,2600);
-      break;
+      revealStagger(scr,250,typingEnd+1400);
+      animateFills(scr,typingEnd+1600);
+      break;}
     case 3:
       animateRadar(scr,400);
       revealStagger(scr,200,800);
