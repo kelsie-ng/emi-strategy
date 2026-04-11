@@ -43,7 +43,7 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .sln.dn{background:var(--grn)}
 
 .wrap{position:fixed;top:calc(var(--hh) + var(--sh));left:0;right:0;bottom:var(--nh);overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
-.scr{display:none;max-width:1280px;margin:0 auto;padding:18px 28px 22px;animation:fadeUp .4s cubic-bezier(.4,0,.2,1)}
+.scr{display:none;max-width:1280px;margin:0 auto;padding:12px 24px 14px;animation:fadeUp .4s cubic-bezier(.4,0,.2,1)}
 .scr.on{display:flex;flex-direction:column}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
@@ -57,7 +57,7 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .nb:disabled{opacity:.3;cursor:not-allowed;transform:none!important;box-shadow:none!important}
 .nc{font-size:12px;color:var(--mut);font-weight:600}
 
-.pb{margin-top:14px;padding:8px 14px;background:linear-gradient(135deg,var(--p50),#faf5ff);border:1px solid var(--p100);border-radius:var(--rs);font-size:11px;color:var(--pur);font-weight:500;display:flex;align-items:center;gap:8px}
+.pb{margin-top:8px;padding:5px 12px;background:linear-gradient(135deg,var(--p50),#faf5ff);border:1px solid var(--p100);border-radius:var(--rs);font-size:10px;color:var(--pur);font-weight:500;display:flex;align-items:center;gap:8px}
 .pb i[data-lucide]{width:14px;height:14px}
 
 .card{background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:14px;transition:all .25s;box-shadow:0 1px 2px rgba(0,0,0,0.02)}
@@ -149,11 +149,11 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
 .faq-item{border:1px solid rgba(0,0,0,0.06);border-radius:var(--rs);overflow:hidden;transition:all .2s}
 .faq-item:hover{box-shadow:0 4px 12px rgba(0,0,0,0.04)}
-.faq-q{padding:14px 18px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;transition:background .2s;user-select:none;gap:8px}
+.faq-q{padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;transition:background .2s;user-select:none;gap:8px}
 .faq-q:hover{background:var(--srf)}
 .faq-q i[data-lucide]{width:16px;height:16px;color:var(--mut);transition:transform .25s;flex-shrink:0}
 .faq-item.open .faq-q i[data-lucide]{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 18px;font-size:13px;color:var(--mut);line-height:1.65;background:var(--srf)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 14px;font-size:11px;color:var(--mut);line-height:1.55;background:var(--srf)}
 .faq-a p{margin:0 0 9px 0}
 .faq-a p:last-child{margin-bottom:0}
 .faq-a a{color:var(--teal);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
@@ -222,7 +222,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 /* Counter animation helper */
 .count-up{font-variant-numeric:tabular-nums}
 /* === DEMO 2 PHASE-DRIVEN STYLES === */
-.phase-banner{padding:14px 18px;border-radius:12px;border-left:4px solid var(--tl)}
+.phase-banner{padding:8px 14px;border-radius:10px;border-left:4px solid var(--tl)}
 .phase-banner.phase-tl{background:linear-gradient(135deg,var(--t50),#fff);border-left-color:var(--teal)}
 .phase-banner.phase-grn{background:linear-gradient(135deg,var(--g50),#fff);border-left-color:var(--grn)}
 .phase-banner.phase-pur{background:linear-gradient(135deg,var(--p50),#fff);border-left-color:var(--pur)}
@@ -231,9 +231,9 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .phase-ic i[data-lucide]{width:24px;height:24px}
 .phase-meta{flex:1;min-width:0}
 .phase-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);background:var(--t50);padding:3px 8px;border-radius:4px;margin-bottom:4px}
-.phase-title{font-size:22px;font-weight:900;letter-spacing:-0.02em;margin:0 0 3px 0;line-height:1.1}
-.phase-title .phase-en{font-size:14px;color:var(--mut);font-weight:500;font-style:italic}
-.phase-quote{font-size:11px;color:var(--teal);font-style:italic;margin:0;line-height:1.4}
+.phase-title{font-size:18px;font-weight:900;letter-spacing:-0.02em;margin:0 0 2px 0;line-height:1.1}
+.phase-title .phase-en{font-size:12px;color:var(--mut);font-weight:500;font-style:italic}
+.phase-quote{font-size:10px;color:var(--teal);font-style:italic;margin:0;line-height:1.35}
 .phase-quote a{color:inherit;text-decoration:underline}
 .phase-stat{text-align:right;flex-shrink:0}
 .phase-stat .sv{font-size:28px;font-weight:900;line-height:1}
@@ -332,7 +332,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 /* === Screen 2 click-through task sidebar === */
 /* Screen 3 collapsible banner states */
 .nv-banner-full{transition:all .3s ease}
-.nv-banner-compact{display:none;align-items:center;gap:10px;padding:6px 14px;background:linear-gradient(90deg,var(--t50),#fff);border-left:3px solid var(--teal);border-radius:6px;font-size:11px;color:var(--txt)}
+.nv-banner-compact{display:none;align-items:center;gap:8px;padding:4px 12px;background:linear-gradient(90deg,var(--t50),#fff);border-left:3px solid var(--teal);border-radius:5px;font-size:10px;color:var(--txt)}
 .nv-bc-ic{width:20px;height:20px;border-radius:4px;background:var(--teal);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .nv-bc-ic i[data-lucide]{width:11px;height:11px}
 .nv-bc-tag{font-weight:800;color:var(--teal);font-size:11px}
@@ -343,34 +343,34 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 #nvScreen.nv-active .nv-banner-full{display:none}
 #nvScreen.nv-active .nv-banner-compact{display:flex}
 #nvScreen.nv-active .nv-intro-line{display:none}
-#nvScreen.nv-active .nv-panel{min-height:440px}
-.nv-layout{display:grid;grid-template-columns:260px 1fr;gap:18px;margin-top:10px}
-.nv-sidebar{display:flex;flex-direction:column;gap:6px}
-.nv-tab{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid #e5e7eb;border-radius:9px;background:#fff;cursor:pointer;transition:all .2s;position:relative}
+#nvScreen.nv-active .nv-panel{min-height:0}
+.nv-layout{display:grid;grid-template-columns:240px 1fr;gap:14px;margin-top:8px}
+.nv-sidebar{display:flex;flex-direction:column;gap:3px}
+.nv-tab{display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid #e5e7eb;border-radius:7px;background:#fff;cursor:pointer;transition:all .2s;position:relative}
 .nv-tab:hover{border-color:var(--t200);background:#f0fdfa}
 .nv-tab.tm-learneris{border-left:3px solid var(--teal)}
 .nv-tab.tm-partner{border-left:3px solid #cbd5e1}
 .nv-tab.active{background:linear-gradient(90deg,var(--t50) 0%,#fff 100%);border-color:var(--teal);box-shadow:0 2px 8px rgba(13,148,136,0.12)}
 .nv-tab.active::after{content:"";position:absolute;right:-7px;top:50%;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:var(--t50);border-right:1px solid var(--teal);border-top:1px solid var(--teal);border-radius:2px}
-.nv-num{width:32px;height:32px;border-radius:7px;background:var(--srf);color:var(--mut);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-variant-numeric:tabular-nums}
+.nv-num{width:26px;height:26px;border-radius:6px;background:var(--srf);color:var(--mut);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;flex-shrink:0;font-variant-numeric:tabular-nums}
 .nv-tab.tm-learneris .nv-num{background:var(--teal);color:#fff}
 .nv-tab.tm-learneris.active .nv-num{background:var(--t800)}
 .nv-mini{flex:1;min-width:0}
-.nv-title{font-size:13px;font-weight:700;color:var(--txt);line-height:1.3;margin-bottom:4px}
-.nv-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;padding:3px 6px;border-radius:4px}
-.nv-panel{border:1.5px solid var(--teal);border-radius:12px;background:linear-gradient(135deg,var(--t50) 0%,#fff 60%);padding:22px 26px;min-height:380px;display:flex;flex-direction:column;animation:nvFadeIn .3s ease}
+.nv-title{flex:1;font-size:11px;font-weight:700;color:var(--txt);line-height:1.25;min-width:0}
+.nv-badge{display:inline-block;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;padding:2px 5px;border-radius:3px}
+.nv-panel{border:1.5px solid var(--teal);border-radius:10px;background:linear-gradient(135deg,var(--t50) 0%,#fff 60%);padding:14px 18px;min-height:0;display:flex;flex-direction:column;animation:nvFadeIn .3s ease}
 .nv-panel.partner{border-color:#cbd5e1;background:linear-gradient(135deg,#f8fafc 0%,#fff 60%)}
 @keyframes nvFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .nv-p-hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .nv-p-num{width:46px;height:46px;border-radius:9px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;font-variant-numeric:tabular-nums}
 .nv-panel.partner .nv-p-num{background:#94a3b8}
 .nv-p-task{flex:1;font-size:19px;font-weight:800;color:var(--txt);line-height:1.2;letter-spacing:-0.01em}
-.nv-p-src{font-size:12px;color:var(--mut);font-style:italic;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e5e7eb}
-.nv-p-product{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.nv-p-bd{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border-radius:5px;background:var(--teal);color:#fff}
+.nv-p-src{font-size:11px;color:var(--mut);font-style:italic;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e5e7eb}
+.nv-p-product{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.nv-p-bd{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;padding:4px 10px;border-radius:4px;background:var(--teal);color:#fff}
 .nv-panel.partner .nv-p-bd{background:#64748b}
-.nv-p-name{font-size:15px;font-weight:800;color:var(--txt)}
-.nv-p-mech{font-size:14px;color:var(--txt);line-height:1.65}
+.nv-p-name{font-size:13px;font-weight:800;color:var(--txt)}
+.nv-p-mech{font-size:12px;color:var(--txt);line-height:1.55}
 .nv-p-mech strong{color:var(--teal);font-weight:700}
 .nv-panel.partner .nv-p-mech strong{color:#475569}
 .nv-p-mech em{font-style:italic;color:var(--mut);font-size:11px;display:block;margin-top:6px}
@@ -517,24 +517,30 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .int-prod-shot{margin:8px -12px 8px -12px;height:96px;overflow:hidden;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;background:#f8fafc}
 .int-prod-shot img{width:100%;height:auto;display:block;object-fit:cover;object-position:top}
 /* Browser-frame variant: makes any UI screenshot read as "this is the actual app" — works for both light and dark themes */
-.int-prod-frame{margin:10px 0 10px 0;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-.int-pf-bar{height:14px;background:linear-gradient(180deg,#f8fafc,#f1f5f9);border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:4px;padding:0 8px}
-.int-pf-bar span{width:6px;height:6px;border-radius:50%;background:#cbd5e1}
+.int-prod-frame{margin:8px 0;border:1px solid #e5e7eb;border-radius:5px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.int-pf-bar{height:12px;background:linear-gradient(180deg,#f8fafc,#f1f5f9);border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:3px;padding:0 6px}
+.int-pf-bar span{width:5px;height:5px;border-radius:50%;background:#cbd5e1}
 .int-pf-bar span:nth-child(1){background:#fca5a5}
 .int-pf-bar span:nth-child(2){background:#fcd34d}
 .int-pf-bar span:nth-child(3){background:#86efac}
-.int-prod-frame img{width:100%;height:90px;display:block;object-fit:cover;object-position:top}
+.int-prod-frame img{width:100%;height:72px;display:block;object-fit:cover;object-position:top}
 /* Adapt mock UI (illustrative, no screenshot available) */
 .int-adapt-mock{background:linear-gradient(180deg,#fafdfc,#fff)}
-.int-adapt-body{padding:10px 12px;height:90px;display:flex;flex-direction:column;gap:5px;justify-content:center}
-.int-adapt-diff{display:flex;align-items:center;gap:3px;font-size:8px;color:var(--mut);font-weight:700}
-.int-adapt-diff em{margin-left:4px;color:var(--pur);font-style:italic}
-.int-adapt-diff-dot{width:6px;height:6px;border-radius:50%;background:#e5e7eb}
+.int-adapt-body{padding:6px 9px;height:72px;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.int-adapt-diff{display:flex;align-items:center;gap:2px;font-size:7px;color:var(--mut);font-weight:700}
+.int-adapt-diff em{margin-left:3px;color:var(--pur);font-style:italic}
+.int-adapt-diff-dot{width:5px;height:5px;border-radius:50%;background:#e5e7eb}
 .int-adapt-diff-dot.on{background:var(--pur);box-shadow:0 0 0 1.5px rgba(168,85,247,0.2)}
-.int-adapt-q{font-size:10px;font-weight:700;color:var(--txt);font-family:'SF Mono',Monaco,monospace}
-.int-adapt-opts{display:flex;flex-direction:column;gap:3px}
-.int-adapt-opt{padding:3px 6px;border:1px solid #e5e7eb;border-radius:4px;font-size:9px;color:var(--mut);background:#fff}
+.int-adapt-q{font-size:9px;font-weight:700;color:var(--txt);font-family:'SF Mono',Monaco,monospace}
+.int-adapt-opts{display:flex;flex-direction:column;gap:2px}
+.int-adapt-opt{padding:2px 5px;border:1px solid #e5e7eb;border-radius:3px;font-size:8px;color:var(--mut);background:#fff}
 .int-adapt-correct{border-color:var(--pur);background:var(--p50);color:var(--txt);font-weight:700}
+/* Học cùng AI card — trust-anchored (no screenshot, credentials inside) */
+.int-p-hoccung{border-top:3px solid var(--amb);background:linear-gradient(180deg,var(--a50) 0%,#fff 40%);cursor:default}
+.int-hoccung-frame{margin:8px 0;padding:8px 10px;background:#fff;border:1px solid #fde68a;border-radius:5px;display:flex;flex-direction:column;gap:5px;min-height:84px;justify-content:center}
+.int-hoccung-item{display:flex;align-items:flex-start;gap:5px;font-size:9px;color:var(--txt);line-height:1.35}
+.int-hoccung-item i[data-lucide]{color:var(--amb);flex-shrink:0;margin-top:1px}
+.int-p-hoccung .int-p-desc strong{color:var(--amb)}
 /* Flagship hero: Chương trình Học cùng AI */
 .int-flagship{display:grid;grid-template-columns:2fr 1fr;gap:16px;padding:16px 20px;margin-bottom:14px;border:1.5px solid var(--teal);border-radius:12px;background:linear-gradient(135deg,var(--t50) 0%,#fff 70%);box-shadow:0 2px 12px rgba(13,148,136,0.08)}
 .int-flag-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;color:var(--teal);background:#fff;border:1px solid var(--t200);padding:4px 10px;border-radius:14px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
@@ -721,11 +727,11 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .mk-aw-ftr{margin-top:8px;padding:6px 9px;background:var(--a50);border-radius:5px;font-size:10px;color:#92400e;line-height:1.4}
 /* === SCREEN 1: LEARNERIS INTRO === */
 /* Screen 1 intro (accordion layout) */
-.intro-head{text-align:center;padding:10px 0 14px}
-.intro-h1{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;margin:6px 0 6px 0}
-.intro-proof-chip{display:inline-block;font-size:12px;color:var(--mut);background:var(--srf);padding:5px 14px;border-radius:14px;font-weight:600}
+.intro-head{text-align:center;padding:4px 0 8px}
+.intro-h1{font-size:clamp(20px,2.6vw,26px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;margin:2px 0 4px 0}
+.intro-proof-chip{display:inline-block;font-size:11px;color:var(--mut);background:var(--srf);padding:3px 12px;border-radius:12px;font-weight:600}
 /* Intro panel body */
-.int-panel{padding:22px 28px;min-height:440px}
+.int-panel{padding:14px 18px;min-height:0}
 .int-p-tag{font-size:11px;font-weight:800;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
 .int-p-title{font-size:24px;font-weight:900;color:var(--txt);margin:0 0 14px 0;letter-spacing:-0.015em;line-height:1.15}
 .int-p-divider{height:1px;background:#e5e7eb;margin-bottom:16px}
@@ -744,18 +750,20 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .int-callout em{color:var(--teal);font-weight:600;font-style:italic}
 /* Intro products (3 cards) */
 .int-prods{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.int-prod{display:block;padding:16px;border:1.5px solid #e5e7eb;border-radius:12px;text-decoration:none;color:inherit;transition:all .25s;background:#fff}
+.int-prods-4{grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.int-prod{display:block;padding:12px;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;color:inherit;transition:all .25s;background:#fff}
 .int-prod:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
 .int-p-core{border-top:3px solid var(--teal);background:linear-gradient(180deg,var(--t50) 0%,#fff 40%)}
 .int-p-studio{border-top:3px solid #6366f1;background:linear-gradient(180deg,#eef2ff 0%,#fff 40%)}
 .int-p-adapt{border-top:3px solid var(--pur);background:linear-gradient(180deg,var(--p50) 0%,#fff 40%)}
-.int-p-hd{display:flex;align-items:center;gap:11px;margin-bottom:10px}
-.int-p-logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.int-p-hd{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.int-p-logo{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--tl),var(--teal));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0}
 .int-lg-dark{background:linear-gradient(135deg,#818cf8,#6366f1)}
 .int-lg-pur{background:linear-gradient(135deg,#a855f7,var(--pur))}
-.int-p-name{font-size:15px;font-weight:900;letter-spacing:-0.01em;line-height:1.1}
-.int-p-url{font-size:11px;color:var(--mut);font-family:'SF Mono',Monaco,monospace;margin-top:2px}
-.int-p-desc{font-size:13px;color:var(--txt);line-height:1.5;margin:0}
+.int-lg-amb{background:linear-gradient(135deg,#fbbf24,var(--amb));color:#fff}
+.int-p-name{font-size:13px;font-weight:900;letter-spacing:-0.01em;line-height:1.1}
+.int-p-url{font-size:10px;color:var(--mut);font-family:'SF Mono',Monaco,monospace;margin-top:2px}
+.int-p-desc{font-size:11px;color:var(--txt);line-height:1.45;margin:0}
 .int-p-desc strong{color:var(--teal);font-weight:700}
 .int-p-studio .int-p-desc strong{color:#6366f1}
 .int-p-adapt .int-p-desc strong{color:var(--pur)}
@@ -1025,65 +1033,40 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
     <span class="nv-bc-meta">8 nhiệm vụ QĐ 2371 Mục III</span>
     <span class="nv-bc-target">Mục tiêu 30% trường HCMC · 2030</span>
   </div>
-  <p class="sub-t nv-intro-line" id="nvIntroLine"><i data-lucide="list-checks"></i> <strong>8 nhiệm vụ</strong> theo thứ tự triển khai (QĐ 2371 · Mục III) — bấm <strong>Tiếp Theo →</strong> để xem từng nhiệm vụ Learneris đáp ứng như thế nào</p>
   <div class="nv-layout">
     <!-- LEFT: 8 task sidebar -->
     <div class="nv-sidebar" id="nvSidebar">
       <div class="nv-tab tm-learneris active" data-nv="0">
         <div class="nv-num">01</div>
-        <div class="nv-mini">
-          <div class="nv-title">Nâng cao nhận thức xã hội</div>
-          <div class="nv-badge tm-b-ler">★ Hỗ trợ</div>
-        </div>
+        <div class="nv-title">Nâng cao nhận thức xã hội</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="1">
         <div class="nv-num">02</div>
-        <div class="nv-mini">
-          <div class="nv-title">Xây dựng thể chế &amp; chính sách</div>
-          <div class="nv-badge tm-b-ler">★ Learneris</div>
-        </div>
+        <div class="nv-title">Xây dựng thể chế &amp; chính sách</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="2">
         <div class="nv-num">03</div>
-        <div class="nv-mini">
-          <div class="nv-title">Phát triển đội ngũ giáo viên</div>
-          <div class="nv-badge tm-b-ler">★ Hỗ trợ</div>
-        </div>
+        <div class="nv-title">Phát triển đội ngũ giáo viên</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="3">
         <div class="nv-num">04</div>
-        <div class="nv-mini">
-          <div class="nv-title">Xây dựng chương trình &amp; học liệu</div>
-          <div class="nv-badge tm-b-ler">★ Learneris</div>
-        </div>
+        <div class="nv-title">Xây dựng chương trình &amp; học liệu</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="4">
         <div class="nv-num">05</div>
-        <div class="nv-mini">
-          <div class="nv-title">Đổi mới phương pháp dạy &amp; đánh giá</div>
-          <div class="nv-badge tm-b-ler">★ Learneris</div>
-        </div>
+        <div class="nv-title">Đổi mới PP dạy &amp; đánh giá</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="5">
         <div class="nv-num">06</div>
-        <div class="nv-mini">
-          <div class="nv-title">Ứng dụng công nghệ &amp; AI</div>
-          <div class="nv-badge tm-b-ler">★ Learneris</div>
-        </div>
+        <div class="nv-title">Ứng dụng công nghệ &amp; AI</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="6">
         <div class="nv-num">07</div>
-        <div class="nv-mini">
-          <div class="nv-title">Hợp tác quốc tế</div>
-          <div class="nv-badge tm-b-ler">★ Hỗ trợ</div>
-        </div>
+        <div class="nv-title">Hợp tác quốc tế</div>
       </div>
       <div class="nv-tab tm-learneris" data-nv="7">
         <div class="nv-num">08</div>
-        <div class="nv-mini">
-          <div class="nv-title">Phong trào thi đua &amp; khen thưởng</div>
-          <div class="nv-badge tm-b-ler">★ Learneris</div>
-        </div>
+        <div class="nv-title">Thi đua &amp; khen thưởng</div>
       </div>
     </div>
     <!-- RIGHT: Active task details panel -->
@@ -1210,11 +1193,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
       </div>
     </div>
   </div>
-  <div class="fcta" style="margin-top:14px">
-    <h3>Bước tiếp theo — đặt lịch gặp 30 phút</h3>
-    <p>Trao đổi lộ trình EMI tùy chỉnh cho Sở HCMC &middot; hello@learneris.com</p>
-  </div>
-  <div class="pb"><i data-lucide="zap"></i> Learneris Pte. Ltd. (Singapore) &middot; Vietlearn JSC (Vietnam)</div>
+  <div class="pb" style="margin-top:8px"><i data-lucide="zap"></i> Còn câu hỏi? hello@learneris.com · Learneris Pte. Ltd. (Singapore) · Vietlearn JSC (Vietnam)</div>
 </div>
 
 </div>
@@ -1920,37 +1899,16 @@ const INTRO_DATA=[
     <div class="int-callout"><i data-lucide="quote"></i><p>Nền tảng <strong>chuyên biệt cho giáo dục Việt Nam</strong> — khung CLIL 4C, song ngữ Việt-Anh chuẩn sư phạm, sẵn sàng đáp ứng khung QĐ 2371.</p></div>
   `},
   {tag:'SẢN PHẨM · Products',title:'Sản phẩm chính của Learneris',content:`
-    <div class="int-flagship">
-      <div class="int-flag-left">
-        <div class="int-flag-badge"><i data-lucide="award" style="width:10px;height:10px"></i> SẢN PHẨM CHỦ LỰC · <em>Flagship</em></div>
-        <h3 class="int-flag-title">Chương trình Học cùng AI</h3>
-        <p class="int-flag-sub">Chương trình giáo dục AI Literacy cho học sinh Việt Nam từ <strong>Lớp 1 → Lớp 12</strong> — triển khai tại trường, tích hợp khung GDPT 2018.</p>
-        <div class="int-flag-creds">
-          <div class="int-flag-cred"><i data-lucide="shield-check" style="width:11px;height:11px"></i><span><strong>VNIES thẩm định khung</strong> chương trình Lớp 1 → Lớp 12</span></div>
-          <div class="int-flag-cred"><i data-lucide="check-circle" style="width:11px;height:11px"></i><span><strong>Sở GD&ĐT TP.HCM thẩm định</strong> chi tiết cho khối THCS · Tiểu học và THPT đang thẩm định</span></div>
-          <div class="int-flag-cred"><i data-lucide="zap" style="width:11px;height:11px"></i><span>Đang <strong>triển khai thực tế</strong> tại trường THCS</span></div>
-        </div>
-      </div>
-      <div class="int-flag-right">
-        <div class="int-flag-stack-lbl">Xây dựng trên nền tảng kỹ thuật:</div>
-        <div class="int-flag-stack">
-          <span class="int-flag-pill"><strong>Learneris</strong></span>
-          <span class="int-flag-pill"><strong>Studio</strong></span>
-          <span class="int-flag-pill"><strong>Adapt</strong></span>
-        </div>
-      </div>
-    </div>
-    <div class="int-stack-lbl">NỀN TẢNG KỸ THUẬT · <em>Underlying platforms</em></div>
-    <div class="int-prods">
+    <div class="int-prods int-prods-4">
       <a href="https://learneris.com" target="_blank" class="int-prod int-p-core">
         <div class="int-p-hd"><div class="int-p-logo"><span>L</span></div><div><div class="int-p-name">Learneris</div><div class="int-p-url">learneris.com</div></div></div>
         <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/learneris-com-section-features.png" alt="Learneris features" loading="lazy"></div>
-        <p class="int-p-desc"><strong>14+ AI tools soạn bài & đánh giá</strong> — GV chọn <strong>Yêu Cầu Cần Đạt (YCCD)</strong> trong khung <strong>GDPT 2018</strong> để AI tạo đúng loại học liệu.</p>
+        <p class="int-p-desc"><strong>14+ AI tools</strong> — GV chọn <strong>YCCD trong khung GDPT 2018</strong> để AI tạo học liệu đúng chuẩn.</p>
       </a>
       <a href="https://studio.learneris.com" target="_blank" class="int-prod int-p-studio">
         <div class="int-p-hd"><div class="int-p-logo int-lg-dark"><span>L</span></div><div><div class="int-p-name">Learneris Studio</div><div class="int-p-url">studio.learneris.com</div></div></div>
         <div class="int-prod-frame"><div class="int-pf-bar"><span></span><span></span><span></span></div><img src="assets/screenshots/studio-learneris-hero.png" alt="Learneris Studio" loading="lazy"></div>
-        <p class="int-p-desc"><strong>AI Content Production quy mô lớn</strong> — cho nhà xuất bản và trường học <strong>chuẩn hóa học liệu số</strong>, human-in-the-loop.</p>
+        <p class="int-p-desc"><strong>AI Content Production</strong> — cho nhà xuất bản và trường <strong>chuẩn hóa học liệu số</strong>.</p>
       </a>
       <a href="https://adapt.learneris.com" target="_blank" class="int-prod int-p-adapt">
         <div class="int-p-hd"><div class="int-p-logo int-lg-pur"><span>A</span></div><div><div class="int-p-name">Learneris Adapt</div><div class="int-p-url">adapt.learneris.com</div></div></div>
@@ -1958,15 +1916,23 @@ const INTRO_DATA=[
           <div class="int-pf-bar"><span></span><span></span><span></span></div>
           <div class="int-adapt-body">
             <div class="int-adapt-diff"><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot on"></span><span class="int-adapt-diff-dot"></span><span class="int-adapt-diff-dot"></span><em>Medium</em></div>
-            <div class="int-adapt-q">If x² + 4x = 12, what is x?</div>
+            <div class="int-adapt-q">x² + 4x = 12, x = ?</div>
             <div class="int-adapt-opts">
-              <div class="int-adapt-opt">A. x = 2</div>
-              <div class="int-adapt-opt int-adapt-correct">B. x = 2 or x = -6 ✓</div>
+              <div class="int-adapt-opt int-adapt-correct">B. x = 2 or -6 ✓</div>
             </div>
           </div>
         </div>
-        <p class="int-p-desc"><strong>Adaptive Testing Engine</strong> — AI chấm điểm + câu hỏi <strong>tự điều chỉnh độ khó</strong> theo năng lực HS.</p>
+        <p class="int-p-desc"><strong>Adaptive Testing Engine</strong> — AI chấm + câu hỏi <strong>tự điều chỉnh độ khó</strong>.</p>
       </a>
+      <div class="int-prod int-p-hoccung">
+        <div class="int-p-hd"><div class="int-p-logo int-lg-amb"><i data-lucide="sparkles" style="width:14px;height:14px"></i></div><div><div class="int-p-name">Học cùng AI</div><div class="int-p-url">Chương trình K-12</div></div></div>
+        <div class="int-hoccung-frame">
+          <div class="int-hoccung-item"><i data-lucide="check-circle" style="width:10px;height:10px"></i><span>VNIES thẩm định khung</span></div>
+          <div class="int-hoccung-item"><i data-lucide="check-circle" style="width:10px;height:10px"></i><span>Sở GD&ĐT TP.HCM thẩm định (THCS)</span></div>
+          <div class="int-hoccung-item"><i data-lucide="zap" style="width:10px;height:10px"></i><span>Đang triển khai tại trường</span></div>
+        </div>
+        <p class="int-p-desc"><strong>Chương trình AI Literacy</strong> cho học sinh <strong>Lớp 1 → Lớp 12</strong>, tích hợp khung GDPT 2018.</p>
+      </div>
     </div>
   `},
   {tag:'CHỨNG NHẬN · Trust',title:'Chứng nhận & uy tín pháp lý',content:`
