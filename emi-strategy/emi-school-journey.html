@@ -98,6 +98,18 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .cbx.on{border-color:var(--teal);background:#f0fdfa;color:var(--teal);font-weight:600}
 .detect-hint{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--teal);margin-top:6px;padding:5px 10px;background:var(--g50);border-radius:6px;opacity:0;transition:opacity .3s}
 .detect-hint.show{opacity:1}
+.svy-tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;table-layout:auto}
+.svy-tbl thead th{padding:5px 6px;text-align:left;font-weight:700;color:var(--mut);text-transform:uppercase;font-size:9px;letter-spacing:0.04em;border-bottom:1px solid #e5e7eb}
+.svy-tbl tbody td{padding:6px;border-top:1px solid #f1f5f9;vertical-align:middle}
+.svy-tbl tbody td:first-child{color:var(--mut);font-weight:600;font-variant-numeric:tabular-nums}
+.svy-tbl .wt{text-align:center;font-weight:700;color:var(--teal);font-variant-numeric:tabular-nums}
+.svy-tbl .wt.hi{color:var(--pur)}
+.r-tag{display:inline-flex;align-items:center;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700;margin-right:2px;white-space:nowrap;line-height:1.5}
+.r-ht{background:#fef3c7;color:#92400e}
+.r-pht{background:#dbeafe;color:#1e40af}
+.r-tt{background:#d1fae5;color:#065f46}
+.r-gv{background:#e0e7ff;color:#3730a3}
+.r-it{background:#fce7f3;color:#9f1239}
 .scr.on .card,.scr.on .st{animation:cardIn .4s cubic-bezier(.4,0,.2,1) backwards}
 .scr.on .card:nth-child(2),.scr.on .st:nth-child(2){animation-delay:.06s}
 .scr.on .card:nth-child(3),.scr.on .st:nth-child(3){animation-delay:.12s}
@@ -309,15 +321,51 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 
 <!-- ===== 3. ASSESS ===== -->
 <div class="scr" data-s="3">
-  <h2 class="sec-t"><i data-lucide="radar"></i> Đánh Giá 7 Tiêu Chí EMI</h2>
-  <p class="sec-s">Theo khung QD 2371/QD-TTg — 7 tiêu chuẩn, 3 mức độ.</p>
+  <h2 class="sec-t"><i data-lucide="clipboard-list"></i> Khảo Sát &amp; Đánh Giá 7 Tiêu Chí EMI</h2>
+  <p class="sec-s">Theo QĐ 2371/QĐ-TTg — 30 câu hỏi, thang 4 mức. Hệ thống tự phân công đúng người trả lời.</p>
   <div class="g2">
+    <!-- LEFT: Survey assignment matrix -->
     <div>
-      <!-- Mockup: platform radar chart -->
       <div class="mock-browser">
-        <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url">lms.learneris.com/emi/assessment</span></div>
-        <div class="mock-body" style="text-align:center;padding:10px">
-          <svg width="260" height="210" viewBox="0 0 260 210" style="margin:0 auto;display:block">
+        <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url">lms.learneris.com/emi/survey/assign</span></div>
+        <div class="mock-body" style="padding:10px 12px">
+          <p style="font-weight:700;font-size:12px;margin-bottom:6px;display:flex;align-items:center;gap:5px"><i data-lucide="users" style="width:13px;height:13px;color:var(--teal)"></i> Phân công khảo sát</p>
+          <table class="svy-tbl">
+            <thead><tr><th style="width:18px">#</th><th>Tiêu chí</th><th style="width:28px;text-align:center">TS</th><th>Ai trả lời</th></tr></thead>
+            <tbody>
+              <tr class="svy-row reveal-item"><td>1</td><td>MT Ngôn ngữ</td><td class="wt">10%</td><td><span class="r-tag r-ht">HT</span> <span class="r-tag r-tt">Tổ EMI</span></td></tr>
+              <tr class="svy-row reveal-item"><td>2</td><td>CT &amp; Dạy học</td><td class="wt hi">25%</td><td><span class="r-tag r-ht">HT</span> <span class="r-tag r-pht">PHT CM</span></td></tr>
+              <tr class="svy-row reveal-item"><td>3</td><td>Học liệu</td><td class="wt">10%</td><td><span class="r-tag r-tt">Tổ EMI</span> <span class="r-tag r-gv">GV bộ môn</span></td></tr>
+              <tr class="svy-row reveal-item"><td>4</td><td>Số hóa &amp; AI</td><td class="wt">15%</td><td><span class="r-tag r-pht">PHT</span> <span class="r-tag r-it">Cán bộ CNTT</span></td></tr>
+              <tr class="svy-row reveal-item"><td>5</td><td>Đội ngũ CB, GV, HS</td><td class="wt hi">25%</td><td><span class="r-tag r-ht">HT</span> <span class="r-tag r-gv">GV tự ĐG CEFR</span></td></tr>
+              <tr class="svy-row reveal-item"><td>6</td><td>Hợp tác quốc tế</td><td class="wt">10%</td><td><span class="r-tag r-ht">HT</span></td></tr>
+              <tr class="svy-row reveal-item"><td>7</td><td>NC khoa học &amp; CN</td><td class="wt">5%</td><td><span class="r-tag r-tt">Tổ EMI</span> <span class="r-tag r-gv">GV dự án</span></td></tr>
+            </tbody>
+          </table>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid #f1f5f9">
+            <div style="flex:1"><div class="pt"><div class="pf fg anim-fill" data-w="100%"></div></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--grn);white-space:nowrap">3/3 người · 30/30 câu</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample question preview -->
+      <div class="card reveal-item" style="margin-top:8px;padding:10px 12px;border-left:3px solid var(--teal)">
+        <div style="font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px">Ví dụ — Tiêu chí 1 / Câu 1</div>
+        <p style="font-size:12px;font-weight:600;margin-bottom:5px">Mức độ song ngữ trong bảng hiệu, bảng tin của trường?</p>
+        <div style="display:flex;flex-direction:column;gap:3px;font-size:11px">
+          <div style="color:var(--mut)">○ A. Chỉ tiếng Việt</div>
+          <div style="color:var(--mut)">○ B. &lt;30% song ngữ</div>
+          <div style="color:var(--teal);font-weight:700">● C. 30-80% song ngữ <span style="color:var(--mut);font-weight:400">→ 2/3 điểm</span></div>
+          <div style="color:var(--mut)">○ D. 100% song ngữ + chủ đề</div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT: Results -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="mock-browser">
+        <div class="mock-bar"><span class="mock-dot" style="background:#f87171"></span><span class="mock-dot" style="background:#fbbf24"></span><span class="mock-dot" style="background:#4ade80"></span><span class="mock-url">lms.learneris.com/emi/result</span></div>
+        <div class="mock-body" style="text-align:center;padding:8px">
+          <svg width="240" height="195" viewBox="0 0 260 210" style="margin:0 auto;display:block">
             <defs><style>text.rl{font-size:11px;font-weight:600;font-family:Inter,sans-serif}</style></defs>
             <g transform="translate(130,105)">
               <polygon points="0,-80 70,-55 86,8 50,68 -50,68 -86,8 -70,-55" fill="none" stroke="#e5e7eb" stroke-width="1"/>
@@ -329,39 +377,28 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
               <circle cx="15" cy="51" r="3" fill="var(--teal)"/><circle cx="-15" cy="34" r="3" fill="var(--red)"/><circle cx="-26" cy="3" r="3" fill="var(--red)"/><circle cx="-49" cy="-39" r="3" fill="var(--amb)"/>
             </g>
             <text x="130" y="12" text-anchor="middle" class="rl" fill="var(--teal)">Ngôn ngữ 70%</text>
-            <text x="222" y="55" text-anchor="start" class="rl" fill="var(--teal)">CT & Dạy học 55%</text>
-            <text x="235" y="120" text-anchor="start" class="rl" fill="var(--amb)">Học liệu 40%</text>
-            <text x="195" y="185" text-anchor="middle" class="rl" fill="var(--teal)">Số hóa & AI 75%</text>
+            <text x="222" y="55" text-anchor="start" class="rl" fill="var(--teal)">CT 55%</text>
+            <text x="235" y="120" text-anchor="start" class="rl" fill="var(--amb)">HL 40%</text>
+            <text x="195" y="185" text-anchor="middle" class="rl" fill="var(--teal)">Số hóa 75%</text>
             <text x="65" y="185" text-anchor="middle" class="rl" fill="var(--red)">Đội ngũ 45%</text>
-            <text x="10" y="120" text-anchor="end" class="rl" fill="var(--red)">Quốc tế 30%</text>
-            <text x="22" y="55" text-anchor="end" class="rl" fill="var(--amb)">NC&CN 35%</text>
+            <text x="10" y="120" text-anchor="end" class="rl" fill="var(--red)">QT 30%</text>
+            <text x="22" y="55" text-anchor="end" class="rl" fill="var(--amb)">NC 35%</text>
           </svg>
-          <div style="font-size:32px;font-weight:900;color:var(--teal)"><span class="count-target">0</span><span style="font-size:14px;color:var(--mut)">/100</span></div>
-          <div class="tag tt" style="margin-top:4px">Đang tiến tới Level 1</div>
+          <div style="font-size:28px;font-weight:900;color:var(--teal);line-height:1"><span class="count-target">0</span><span style="font-size:13px;color:var(--mut)">/100</span></div>
+          <div class="tag tt" style="margin-top:3px;font-size:10px">Đang tiến tới Mức Độ 1</div>
         </div>
       </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <p style="font-size:12px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:6px"><i data-lucide="list-checks" style="width:14px;height:14px;color:var(--teal)"></i> Phân tích 7 tiêu chí</p>
-      <div class="card reveal-item" style="padding:10px 14px;border-left:3px solid var(--red)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span class="tag tr" style="font-size:11px">Ưu tiên</span><strong style="font-size:11px">5. Đội ngũ — 45%</strong></div>
-        <p style="font-size:12px;color:var(--mut);line-height:1.4">15/45 GV đạt B2+. Cần bồi dưỡng CLIL cho 30 GV.</p>
+      <div class="card reveal-item" style="padding:8px 12px;border-left:3px solid var(--red)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span class="tag tr" style="font-size:10px">Ưu tiên</span><strong style="font-size:11px">5. Đội ngũ — 45%</strong></div>
+        <p style="font-size:11px;color:var(--mut);line-height:1.35">15/45 GV đạt B2+. Cần bồi dưỡng CLIL 30 GV.</p>
       </div>
-      <div class="card reveal-item" style="padding:10px 14px;border-left:3px solid var(--red)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span class="tag tr" style="font-size:11px">Ưu tiên</span><strong style="font-size:11px">6. Hợp tác quốc tế — 30%</strong></div>
-        <p style="font-size:12px;color:var(--mut);line-height:1.4">Chưa có đối tác hay chương trình trao đổi.</p>
-      </div>
-      <div class="card reveal-item" style="padding:10px 14px;border-left:3px solid var(--amb)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span class="tag ta" style="font-size:11px">Phát triển</span><strong style="font-size:11px">3. Học liệu — 40%</strong></div>
-        <p style="font-size:12px;color:var(--mut);line-height:1.4">Chưa có tài liệu CLIL cho Toán và Khoa Học.</p>
-      </div>
-      <div class="card reveal-item" style="padding:10px 14px;border-left:3px solid var(--grn)">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span class="tag tg" style="font-size:11px">Tốt</span><strong style="font-size:11px">4. Số hóa & AI — 75%</strong></div>
-        <p style="font-size:12px;color:var(--mut);line-height:1.4">Hạ tầng CNTT tốt. Đã dùng nền tảng Learneris.</p>
+      <div class="card reveal-item" style="padding:8px 12px;border-left:3px solid var(--red)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span class="tag tr" style="font-size:10px">Ưu tiên</span><strong style="font-size:11px">6. Hợp tác QT — 30%</strong></div>
+        <p style="font-size:11px;color:var(--mut);line-height:1.35">Chưa có đối tác/chương trình trao đổi.</p>
       </div>
     </div>
   </div>
-  <div class="pb"><i data-lucide="zap"></i> Powered by: LMS Assessment &middot; Khung 7 tiêu chí QD 2371</div>
+  <div class="pb"><i data-lucide="zap"></i> Powered by: LMS Assessment &middot; Khung 7 tiêu chí QĐ 2371 (30 câu hỏi)</div>
 </div>
 
 <!-- ===== 4. TRAIN ===== -->
