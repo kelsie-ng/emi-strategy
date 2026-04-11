@@ -272,6 +272,63 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .why-grid strong{color:var(--txt)}
 .why-grid .en{font-family:inherit;font-size:inherit;color:var(--mut)}
 @media(max-width:768px){.phase-title{font-size:18px}.phase-stat .sv{font-size:22px}.phase-hd{gap:10px}.phase-ic{width:40px;height:40px}.phase-ic i[data-lucide]{width:20px;height:20px}}
+/* === DEMO 2 v2 — TASK MAPPING, FEATURE CARDS, VISION === */
+.tm-list{display:flex;flex-direction:column;gap:6px}
+.tm-item{display:grid;grid-template-columns:32px 1fr 1.3fr;gap:10px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;align-items:center;transition:all .2s}
+.tm-item.tm-learneris{border-left:3px solid var(--teal);background:linear-gradient(90deg,var(--t50) 0%,#fff 30%)}
+.tm-item.tm-partner{border-left:3px solid #cbd5e1;opacity:0.85}
+.tm-item.tm-learneris:hover{box-shadow:0 2px 12px rgba(13,148,136,0.1);transform:translateX(2px)}
+.tm-num{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;background:var(--srf);color:var(--mut);font-size:11px;font-weight:800;font-variant-numeric:tabular-nums}
+.tm-learneris .tm-num{background:var(--teal);color:#fff}
+.tm-body .tm-task{font-size:12px;font-weight:700;color:var(--txt);line-height:1.35}
+.tm-body .tm-src{font-size:10px;color:var(--mut);margin-top:2px;font-style:italic}
+.tm-owner{padding-left:10px;border-left:1px dashed #e5e7eb}
+.tm-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;padding:3px 7px;border-radius:4px;margin-bottom:3px}
+.tm-b-ler{background:var(--teal);color:#fff}
+.tm-b-partner{background:#e5e7eb;color:#64748b}
+.tm-who{font-size:11px;color:var(--mut);line-height:1.45}
+.tm-who strong{color:var(--txt);display:block}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.feat-card{display:block;padding:14px;border:1.5px solid #e5e7eb;border-radius:10px;background:#fff;text-decoration:none;color:inherit;transition:all .25s;cursor:pointer}
+.feat-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.feat-card.feat-teal{border-top:3px solid var(--teal)}
+.feat-card.feat-teal:hover{border-color:var(--teal)}
+.feat-card.feat-pur{border-top:3px solid var(--pur)}
+.feat-card.feat-pur:hover{border-color:var(--pur)}
+.feat-card.feat-amb{border-top:3px solid var(--amb)}
+.feat-card.feat-amb:hover{border-color:var(--amb)}
+.feat-card.feat-grn{border-top:3px solid var(--grn)}
+.feat-card.feat-grn:hover{border-color:var(--grn)}
+.feat-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.feat-ic{width:32px;height:32px;border-radius:8px;background:var(--srf);display:flex;align-items:center;justify-content:center;color:var(--teal)}
+.feat-teal .feat-ic{background:var(--t50);color:var(--teal)}
+.feat-pur .feat-ic{background:var(--p50);color:var(--pur)}
+.feat-amb .feat-ic{background:var(--a50);color:var(--amb)}
+.feat-grn .feat-ic{background:var(--g50);color:var(--grn)}
+.feat-ic i[data-lucide]{width:16px;height:16px}
+.feat-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--mut);background:var(--srf);padding:3px 7px;border-radius:4px}
+.feat-card h3{font-size:13px;font-weight:800;margin:0 0 5px 0;color:var(--txt)}
+.feat-card p{font-size:11px;color:var(--mut);line-height:1.5;margin:0 0 8px 0}
+.feat-proof{font-size:10px;color:var(--grn);font-weight:600;display:flex;align-items:center;gap:4px;padding-top:6px;border-top:1px dashed #f1f5f9}
+.vis-col{padding:14px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;display:flex;flex-direction:column}
+.vis-col.vis-grn{border-left:3px solid var(--grn);background:linear-gradient(135deg,var(--g50) 0%,#fff 50%)}
+.vis-col.vis-pur{border-left:3px solid var(--pur);background:linear-gradient(135deg,var(--p50) 0%,#fff 50%)}
+.vis-hd{display:flex;gap:10px;margin-bottom:10px}
+.vis-ic{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vis-ic i[data-lucide]{width:18px;height:18px}
+.vis-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:3px;margin-bottom:2px}
+.vis-hd h3{font-size:16px;font-weight:800;margin:0;line-height:1.1}
+.vis-hd h3 .vis-en{font-size:12px;color:var(--mut);font-weight:500;font-style:italic}
+.vis-quote{font-size:10px;font-style:italic;margin:3px 0 0 0;line-height:1.3}
+.vis-quote a{color:inherit;text-decoration:underline}
+.vis-list{display:flex;flex-direction:column;gap:7px;margin-bottom:10px;flex:1}
+.vis-item{display:flex;gap:8px;padding:6px 8px;background:rgba(255,255,255,0.6);border-radius:6px;align-items:flex-start}
+.vis-item i[data-lucide]{width:14px;height:14px;flex-shrink:0;margin-top:2px}
+.vis-item strong{font-size:11px;color:var(--txt);display:block;line-height:1.35}
+.vis-item small{font-size:10px;color:var(--mut);display:block;margin-top:1px}
+.vis-tg{font-size:11px;color:var(--mut);padding-top:8px;border-top:1px dashed #e5e7eb;line-height:1.4}
+.vis-tg strong{color:var(--txt)}
+@media(max-width:768px){.tm-item{grid-template-columns:26px 1fr;gap:8px}.tm-owner{grid-column:1/-1;border-left:none;border-top:1px dashed #e5e7eb;padding-left:0;padding-top:8px}.feat-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -355,120 +412,206 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 </div>
 
 <!-- ===== 2. GIAI ĐOẠN NỀN TẢNG ===== -->
+<!-- ===== 2. GĐ NỀN TẢNG — NHIỆM VỤ & ĐÓNG GÓP ===== -->
 <div class="scr" data-s="2">
   <div class="phase-banner phase-tl">
     <div class="phase-hd">
       <div class="phase-ic"><i data-lucide="sprout"></i></div>
       <div class="phase-meta">
-        <div class="phase-tag">Giai đoạn 2025-2030</div>
+        <div class="phase-tag">GIAI ĐOẠN 2025-2030 · ĐANG KHẨN</div>
         <h2 class="phase-title">GĐ Nền Tảng <span class="phase-en">· Foundation</span></h2>
         <p class="phase-quote">"Xây dựng nền tảng và chuẩn hóa" — <a href="https://luatvietnam.vn/giao-duc/quyet-dinh-2371-qd-ttg-2025-phe-duyet-de-an-tieng-anh-thanh-ngon-ngu-thu-hai-trong-truong-hoc-416990-d1.html" target="_blank">QĐ 2371</a></p>
       </div>
-      <div class="phase-stat"><div class="sv" style="color:var(--teal)">30%</div><div class="slb">Mục tiêu HCMC 2030</div></div>
+      <div class="phase-stat"><div class="sv" style="color:var(--teal)">30%</div><div class="slb">trường HCMC<br>đạt chuẩn năm 2030</div></div>
     </div>
   </div>
-  <div class="g2" style="margin-top:12px">
-    <div>
-      <h3 class="sub-t"><i data-lucide="file-check"></i> Nhiệm vụ theo QĐ 2371</h3>
-      <ul class="task-list">
-        <li><span class="task-ic">01</span><div><strong>Nâng cao nhận thức xã hội</strong> về vai trò tiếng Anh<small>Mục III.1 QĐ 2371</small></div></li>
-        <li><span class="task-ic">02</span><div><strong>Xây dựng thể chế</strong>: tiêu chuẩn, tiêu chí đánh giá, quy định<small>Mục III.2 QĐ 2371 — BGDĐT ban hành</small></div></li>
-        <li><span class="task-ic">03</span><div><strong>Phát triển đội ngũ</strong>: đào tạo, khảo thí, tuyển dụng GV<small>Mục III.3 · KH 18/KH-BGDĐT khảo sát 4/2026</small></div></li>
-        <li><span class="task-ic">04</span><div><strong>Phát triển chương trình & học liệu</strong> EMI<small>Mục III.4 · Nghị định 222/2025/NĐ-CP</small></div></li>
-        <li><span class="task-ic">05</span><div><strong>Chuyển đổi số, AI và cơ sở vật chất</strong><small>Mục III.6 QĐ 2371</small></div></li>
-        <li><span class="task-ic">06</span><div><strong>Thí điểm EMI tại các trường</strong><small>Đăng ký mầm non trước 14/5/2026</small></div></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="sub-t"><i data-lucide="check-circle-2"></i> Learneris đóng góp trực tiếp</h3>
-      <div class="ler-list">
-        <div class="ler-item"><div class="ler-ic" style="background:var(--t50);color:var(--teal)"><i data-lucide="clipboard-list"></i></div><div><strong>Đánh giá sẵn sàng 7 tiêu chí</strong><small>Khung tham chiếu QĐ 2371 · Khảo sát trực tuyến cho HT + PHT + Tổ trưởng EMI</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="school"></i></div><div><strong>Onboarding trường tự động</strong><small>5 cấp học (Mầm non → Sở) · Tự nhận diện cấu trúc lớp từ tên trường</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="sparkles"></i></div><div><strong>AI tạo nội dung CLIL song ngữ</strong><small>11 môn nội dung · Tinh chỉnh trên ngữ liệu SGK Việt Nam · ~2.000đ/bài</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--a50);color:var(--amb)"><i data-lucide="presentation"></i></div><div><strong>Kịch bản 45 phút cho GV</strong><small>Classroom English · phát âm · kỹ thuật scaffolding · hỗ trợ GV A2-B1</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--t50);color:var(--teal)"><i data-lucide="book-open"></i></div><div><strong>Micro-modules thực hành CLIL</strong><small>Tự học · không thay chứng chỉ British Council/VNIES</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="bar-chart-3"></i></div><div><strong>Báo cáo Sở GD&ĐT định kỳ</strong><small>Xuất DOCX/PDF theo mẫu Sở · Học kỳ / Năm học</small></div></div>
+  <p class="sub-t" style="margin-top:14px"><i data-lucide="list-checks"></i> 6 nhiệm vụ theo QĐ 2371 — ai đóng góp gì?</p>
+  <div class="tm-list">
+
+    <div class="tm-item tm-partner">
+      <div class="tm-num">01</div>
+      <div class="tm-body">
+        <div class="tm-task">Nâng cao nhận thức xã hội về vai trò tiếng Anh</div>
+        <div class="tm-src">QĐ 2371 · Mục III.1</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-partner">Đối tác khác</div>
+        <div class="tm-who">Sở GD&ĐT + Báo chí + Truyền thông</div>
       </div>
     </div>
+
+    <div class="tm-item tm-learneris">
+      <div class="tm-num">02</div>
+      <div class="tm-body">
+        <div class="tm-task">Xây dựng thể chế: tiêu chuẩn, tiêu chí đánh giá, quy định</div>
+        <div class="tm-src">QĐ 2371 · Mục III.2.c — BGDĐT ban hành chuẩn chính thức</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-ler">★ Learneris</div>
+        <div class="tm-who"><strong>Khung tham chiếu 7 tiêu chí × 30 chỉ báo</strong><br>→ Đánh giá sẵn sàng EMI chạy ngay</div>
+      </div>
+    </div>
+
+    <div class="tm-item tm-learneris">
+      <div class="tm-num">03</div>
+      <div class="tm-body">
+        <div class="tm-task">Phát triển đội ngũ: đào tạo, khảo thí, tuyển dụng GV</div>
+        <div class="tm-src">QĐ 2371 · Mục III.3 · KH 18/KH-BGDĐT khảo sát 4/2026</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-ler">★ Learneris hỗ trợ</div>
+        <div class="tm-who"><strong>Micro-modules thực hành + kịch bản lớp</strong><br>→ Hỗ trợ GV A2-B1 dạy CLIL · không thay chứng chỉ chính quy (British Council/VNIES)</div>
+      </div>
+    </div>
+
+    <div class="tm-item tm-learneris">
+      <div class="tm-num">04</div>
+      <div class="tm-body">
+        <div class="tm-task">Phát triển chương trình & học liệu EMI</div>
+        <div class="tm-src">QĐ 2371 · Mục III.4 · Nghị định 222/2025/NĐ-CP</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-ler">★ Learneris</div>
+        <div class="tm-who"><strong>AI tạo nội dung CLIL song ngữ</strong><br>→ 11 môn nội dung × 5 cấp học · ~2.000đ/bài</div>
+      </div>
+    </div>
+
+    <div class="tm-item tm-learneris">
+      <div class="tm-num">05</div>
+      <div class="tm-body">
+        <div class="tm-task">Chuyển đổi số, ứng dụng AI và cơ sở vật chất</div>
+        <div class="tm-src">QĐ 2371 · Mục III.6</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-ler">★ Learneris</div>
+        <div class="tm-who"><strong>Nền tảng LMS + AI integration</strong><br>→ Sẵn sàng · An toàn thông tin Cấp 3</div>
+      </div>
+    </div>
+
+    <div class="tm-item tm-learneris">
+      <div class="tm-num">06</div>
+      <div class="tm-body">
+        <div class="tm-task">Thí điểm EMI tại các trường</div>
+        <div class="tm-src">Mầm non đăng ký trước 14/5/2026</div>
+      </div>
+      <div class="tm-owner">
+        <div class="tm-badge tm-b-ler">★ Learneris</div>
+        <div class="tm-who"><strong>Onboarding 5 cấp học + báo cáo Sở</strong><br>→ Tự nhận diện cấu trúc lớp từ tên trường · DOCX/PDF theo mẫu Sở</div>
+      </div>
+    </div>
+
   </div>
-  <div class="pb"><i data-lucide="zap"></i> Xem demo tương tác chi tiết các chức năng Giai đoạn Nền Tảng tại <a href="https://emi.learneris.com/demo" target="_blank" style="color:inherit;text-decoration:underline">emi.learneris.com/demo</a></div>
+  <div class="pb"><i data-lucide="zap"></i> <strong>5/6 nhiệm vụ</strong> Learneris đóng góp trực tiếp · Nhiệm vụ #01 (nhận thức) do Sở + Báo chí · Nhiệm vụ #03 phần chứng chỉ chính quy do British Council/VNIES</div>
 </div>
 
-<!-- ===== 3. GIAI ĐOẠN MỞ RỘNG ===== -->
+<!-- ===== 3. GĐ NỀN TẢNG — CHI TIẾT TÍNH NĂNG ===== -->
 <div class="scr" data-s="3">
-  <div class="phase-banner phase-grn">
-    <div class="phase-hd">
-      <div class="phase-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="book-open"></i></div>
-      <div class="phase-meta">
-        <div class="phase-tag" style="background:var(--g50);color:var(--grn)">Giai đoạn 2030-2035</div>
-        <h2 class="phase-title">GĐ Mở Rộng <span class="phase-en">· Expansion</span></h2>
-        <p class="phase-quote" style="color:var(--grn)">"Mở rộng và tăng cường" — <a href="https://luatvietnam.vn/giao-duc/quyet-dinh-2371-qd-ttg-2025-phe-duyet-de-an-tieng-anh-thanh-ngon-ngu-thu-hai-trong-truong-hoc-416990-d1.html" target="_blank" style="color:var(--grn)">QĐ 2371</a></p>
+  <h2 class="sec-t"><i data-lucide="rocket"></i> GĐ Nền Tảng — Tính Năng Chi Tiết</h2>
+  <p class="sec-s">5 tính năng cốt lõi Learneris chạy ngay cho Sở HCMC · Xem bản tương tác đầy đủ tại <a href="https://emi.learneris.com/demo" target="_blank" style="color:var(--teal);font-weight:600">emi.learneris.com/demo</a></p>
+
+  <div class="feat-grid">
+
+    <a href="https://emi.learneris.com/demo" target="_blank" class="feat-card feat-teal">
+      <div class="feat-hd">
+        <div class="feat-ic"><i data-lucide="clipboard-list"></i></div>
+        <div class="feat-tag">Nhiệm vụ 02 · Thể chế</div>
       </div>
-      <div class="phase-stat"><div class="sv" style="color:var(--grn)">20%</div><div class="slb">Mục tiêu HCMC 2035</div></div>
-    </div>
-  </div>
-  <div class="g2" style="margin-top:12px">
-    <div>
-      <h3 class="sub-t"><i data-lucide="file-check"></i> Nhiệm vụ theo QĐ 2371</h3>
-      <ul class="task-list">
-        <li><span class="task-ic">01</span><div><strong>Mở rộng môi trường ngôn ngữ</strong><small>Clubs, exchanges, events bằng tiếng Anh</small></div></li>
-        <li><span class="task-ic">02</span><div><strong>Nhân rộng mô hình thành công</strong><small>Đánh giá và nhân rộng các trường đi đầu</small></div></li>
-        <li><span class="task-ic">03</span><div><strong>Ứng dụng công nghệ và AI</strong> toàn diện<small>Mục III.6 QĐ 2371</small></div></li>
-        <li><span class="task-ic">04</span><div><strong>Đổi mới phương pháp giảng dạy</strong><small>Communicative + 4-skill integrated</small></div></li>
-        <li><span class="task-ic">05</span><div><strong>Hợp tác quốc tế</strong> thường xuyên<small>Đối tác song phương · chuyên gia nước ngoài</small></div></li>
-        <li><span class="task-ic">06</span><div><strong>20-30% trường đạt Mức Độ 2</strong><small>CLIL ≥2 môn tích cực</small></div></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="sub-t"><i data-lucide="rocket"></i> Learneris đang phát triển <span class="badge-soon">2027-2028</span></h3>
-      <div class="ler-list">
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="users"></i></div><div><strong>Dashboard toàn Sở</strong> — so sánh & benchmark<small>So sánh 100+ trường theo 7 tiêu chí · Hiển thị theo Phòng/Quận</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="bot"></i></div><div><strong>AI Tutor cho học sinh</strong><small>Cá nhân hóa lộ trình · Bài tập CLIL · Speaking practice</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="video"></i></div><div><strong>Video observation + peer coaching</strong> GV<small>Quay và góp ý chéo giữa GV CLIL · Meta-feedback từ AI</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="mail"></i></div><div><strong>Parent communication song ngữ</strong><small>Auto-translate thông báo trường · Chat với phụ huynh bằng 2 ngôn ngữ</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="folder-open"></i></div><div><strong>Student portfolio song ngữ</strong><small>Theo dõi tiến bộ từ tiểu học đến THPT · CEFR alignment</small></div></div>
+      <h3>Đánh Giá Sẵn Sàng EMI</h3>
+      <p>Khung 7 tiêu chí × 30 chỉ báo theo QĐ 2371. Hệ thống tự phân công đúng người trả lời (HT / PHT / Tổ trưởng EMI / GV / CB CNTT) — 17 câu hỏi thang 4 mức + upload tài liệu.</p>
+      <div class="feat-proof"><i data-lucide="check-circle-2" style="width:12px;height:12px"></i> Chạy ngay · Cập nhật khi BGDĐT ban hành chuẩn chính thức</div>
+    </a>
+
+    <a href="https://emi.learneris.com/demo" target="_blank" class="feat-card feat-pur">
+      <div class="feat-hd">
+        <div class="feat-ic"><i data-lucide="sparkles"></i></div>
+        <div class="feat-tag">Nhiệm vụ 04 · Học liệu</div>
       </div>
-    </div>
+      <h3>AI Tạo Nội Dung CLIL</h3>
+      <p>Mô hình AI tinh chỉnh trên ngữ liệu SGK Việt Nam. 11 môn nội dung × 5 cấp học × tỷ lệ tiếng Anh điều chỉnh được (20-100%). Mỗi bài ~3 phút · ~2.000đ.</p>
+      <div class="feat-proof"><i data-lucide="check-circle-2" style="width:12px;height:12px"></i> Khung CLIL 4C (Coyle, 2010) · Tham chiếu Cambridge/Oxford</div>
+    </a>
+
+    <a href="https://emi.learneris.com/demo" target="_blank" class="feat-card feat-amb">
+      <div class="feat-hd">
+        <div class="feat-ic"><i data-lucide="presentation"></i></div>
+        <div class="feat-tag">Nhiệm vụ 03 · Đội ngũ</div>
+      </div>
+      <h3>Kịch Bản Lớp + Hỗ Trợ GV</h3>
+      <p>Kịch bản 45 phút chi tiết: classroom English, phát âm, kỹ thuật scaffolding. GV A2-B1 có thể dạy CLIL ngay mà không cần đợi đạt CEFR B2.</p>
+      <div class="feat-proof"><i data-lucide="info" style="width:12px;height:12px"></i> Bổ trợ — không thay chứng chỉ British Council/VNIES</div>
+    </a>
+
+    <a href="https://emi.learneris.com/demo" target="_blank" class="feat-card feat-grn">
+      <div class="feat-hd">
+        <div class="feat-ic"><i data-lucide="school"></i></div>
+        <div class="feat-tag">Nhiệm vụ 06 · Thí điểm</div>
+      </div>
+      <h3>Onboarding Trường Tự Động</h3>
+      <p>Nhập tên trường → hệ thống tự nhận diện cấp học (Mầm non/Tiểu học/THCS/THPT/Sở) và thiết lập cấu trúc lớp phù hợp. Import roster GV/HS từ Excel.</p>
+      <div class="feat-proof"><i data-lucide="check-circle-2" style="width:12px;height:12px"></i> Sẵn sàng cho đăng ký thí điểm trước 14/5/2026</div>
+    </a>
+
+    <a href="https://emi.learneris.com/demo" target="_blank" class="feat-card feat-teal">
+      <div class="feat-hd">
+        <div class="feat-ic"><i data-lucide="bar-chart-3"></i></div>
+        <div class="feat-tag">Hỗ trợ giám sát</div>
+      </div>
+      <h3>Báo Cáo Sở GD&ĐT</h3>
+      <p>Dashboard tổng hợp theo Phòng/Quận. Xuất DOCX/PDF theo mẫu báo cáo Sở — tiết kiệm công trung gian. Theo dõi tiến độ 7 tiêu chí theo thời gian thực.</p>
+      <div class="feat-proof"><i data-lucide="check-circle-2" style="width:12px;height:12px"></i> Định kỳ học kỳ / năm học</div>
+    </a>
+
   </div>
-  <div class="pb"><i data-lucide="zap"></i> Lộ trình phát triển — chi tiết trong cuộc gặp trực tiếp với Ban Lãnh Đạo Sở</div>
+  <div class="pb"><i data-lucide="external-link"></i> Bấm một thẻ để mở demo tương tác tại <a href="https://emi.learneris.com/demo" target="_blank" style="color:inherit;text-decoration:underline">emi.learneris.com/demo</a> (animation đầy đủ 8 bước)</div>
 </div>
 
-<!-- ===== 4. GIAI ĐOẠN TỰ NHIÊN ===== -->
+<!-- ===== 4. TẦM NHÌN 2030-2045 ===== -->
 <div class="scr" data-s="4">
-  <div class="phase-banner phase-pur">
-    <div class="phase-hd">
-      <div class="phase-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="globe"></i></div>
-      <div class="phase-meta">
-        <div class="phase-tag" style="background:var(--p50);color:var(--pur)">Giai đoạn 2035-2045</div>
-        <h2 class="phase-title">GĐ Tự Nhiên <span class="phase-en">· Natural</span></h2>
-        <p class="phase-quote" style="color:var(--pur)">"Sử dụng một cách tự nhiên" — <a href="https://luatvietnam.vn/giao-duc/quyet-dinh-2371-qd-ttg-2025-phe-duyet-de-an-tieng-anh-thanh-ngon-ngu-thu-hai-trong-truong-hoc-416990-d1.html" target="_blank" style="color:var(--pur)">QĐ 2371</a></p>
+  <h2 class="sec-t"><i data-lucide="telescope"></i> Tầm Nhìn 2030-2045</h2>
+  <p class="sec-s">Cam kết đồng hành dài hạn với Sở theo 3 giai đoạn QĐ 2371. Hôm nay tập trung GĐ Nền Tảng · Tương lai mở rộng song song với chính sách.</p>
+
+  <div class="g2" style="margin-top:10px">
+
+    <div class="vis-col vis-grn">
+      <div class="vis-hd">
+        <div class="vis-ic" style="background:var(--g50);color:var(--grn)"><i data-lucide="book-open"></i></div>
+        <div>
+          <div class="vis-tag" style="background:var(--g50);color:var(--grn)">GIAI ĐOẠN 2030-2035</div>
+          <h3 style="color:#065f46">GĐ Mở Rộng <span class="vis-en">· Expansion</span></h3>
+          <p class="vis-quote" style="color:var(--grn)">"Mở rộng và tăng cường" — <a href="https://luatvietnam.vn/giao-duc/quyet-dinh-2371-qd-ttg-2025-phe-duyet-de-an-tieng-anh-thanh-ngon-ngu-thu-hai-trong-truong-hoc-416990-d1.html" target="_blank" style="color:var(--grn)">QĐ 2371</a></p>
+        </div>
       </div>
-      <div class="phase-stat"><div class="sv" style="color:var(--pur)">10%</div><div class="slb">Mục tiêu HCMC 2045: 40%</div></div>
-    </div>
-  </div>
-  <div class="g2" style="margin-top:12px">
-    <div>
-      <h3 class="sub-t"><i data-lucide="file-check"></i> Tầm nhìn QĐ 2371</h3>
-      <ul class="task-list">
-        <li><span class="task-ic">01</span><div><strong>Tiếng Anh sử dụng tự nhiên</strong><small>"một cách tự nhiên, phổ biến" — toàn trường</small></div></li>
-        <li><span class="task-ic">02</span><div><strong>Chuyển hoàn toàn từ EFL sang ESL</strong><small>Không còn "môn tiếng Anh" — tiếng Anh là phương tiện</small></div></li>
-        <li><span class="task-ic">03</span><div><strong>Nghiên cứu khoa học bằng TA</strong><small>Mục III.7 QĐ 2371 · HS làm dự án bằng tiếng Anh</small></div></li>
-        <li><span class="task-ic">04</span><div><strong>Phối hợp chuẩn quốc tế</strong><small>Cambridge · IB · AP · alignment tự động</small></div></li>
-        <li><span class="task-ic">05</span><div><strong>40-50% trường đạt Mức Độ 3</strong><small>Full EMI với cộng đồng học tập song ngữ</small></div></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="sub-t"><i data-lucide="telescope"></i> Learneris tầm nhìn <span class="badge-future">Dài hạn</span></h3>
-      <div class="ler-list">
-        <div class="ler-item"><div class="ler-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="microscope"></i></div><div><strong>AI Research Assistant</strong> cho HS cấp 3<small>Hỗ trợ viết paper, tham khảo tài liệu, làm dự án NCKH bằng tiếng Anh</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="git-compare-arrows"></i></div><div><strong>Curriculum mapping SGK ↔ IB/Cambridge</strong><small>Tự động ánh xạ bài học chuẩn quốc gia sang chuẩn quốc tế</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="trending-up"></i></div><div><strong>Bilingual learning analytics</strong><small>ML dự đoán · đo hiệu quả EMI dài hạn · alumni outcome tracking</small></div></div>
-        <div class="ler-item"><div class="ler-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="store"></i></div><div><strong>Content marketplace cộng đồng GV</strong><small>GV Việt Nam chia sẻ & kiếm thu nhập từ nội dung CLIL</small></div></div>
+      <div class="vis-list">
+        <div class="vis-item"><i data-lucide="users" style="color:var(--grn)"></i><div><strong>Dashboard toàn Sở — benchmark 100+ trường</strong><small>So sánh theo Phòng/Quận, 7 tiêu chí</small></div></div>
+        <div class="vis-item"><i data-lucide="bot" style="color:var(--grn)"></i><div><strong>AI Tutor cá nhân hóa cho học sinh</strong><small>Bài tập CLIL · Speaking practice</small></div></div>
+        <div class="vis-item"><i data-lucide="video" style="color:var(--grn)"></i><div><strong>Video observation + peer coaching GV CLIL</strong><small>Meta-feedback từ AI</small></div></div>
+        <div class="vis-item"><i data-lucide="mail" style="color:var(--grn)"></i><div><strong>Parent communication song ngữ</strong><small>Auto-translate thông báo trường</small></div></div>
       </div>
+      <div class="vis-tg">Mục tiêu: <strong>20%</strong> trường HCMC đạt Mức Độ 2 · Ra mắt tính năng 2027-2028</div>
     </div>
+
+    <div class="vis-col vis-pur">
+      <div class="vis-hd">
+        <div class="vis-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="globe"></i></div>
+        <div>
+          <div class="vis-tag" style="background:var(--p50);color:var(--pur)">GIAI ĐOẠN 2035-2045</div>
+          <h3 style="color:#6b21a8">GĐ Tự Nhiên <span class="vis-en">· Natural</span></h3>
+          <p class="vis-quote" style="color:var(--pur)">"Sử dụng một cách tự nhiên" — <a href="https://luatvietnam.vn/giao-duc/quyet-dinh-2371-qd-ttg-2025-phe-duyet-de-an-tieng-anh-thanh-ngon-ngu-thu-hai-trong-truong-hoc-416990-d1.html" target="_blank" style="color:var(--pur)">QĐ 2371</a></p>
+        </div>
+      </div>
+      <div class="vis-list">
+        <div class="vis-item"><i data-lucide="microscope" style="color:var(--pur)"></i><div><strong>AI Research Assistant cho HS cấp 3</strong><small>Viết paper, làm dự án NCKH bằng tiếng Anh</small></div></div>
+        <div class="vis-item"><i data-lucide="git-compare-arrows" style="color:var(--pur)"></i><div><strong>Curriculum mapping SGK ↔ IB/Cambridge</strong><small>Tự động ánh xạ chuẩn quốc tế</small></div></div>
+        <div class="vis-item"><i data-lucide="trending-up" style="color:var(--pur)"></i><div><strong>Bilingual learning analytics dài hạn</strong><small>Alumni outcome tracking</small></div></div>
+        <div class="vis-item"><i data-lucide="store" style="color:var(--pur)"></i><div><strong>Content marketplace cộng đồng GV</strong><small>GV VN chia sẻ & kiếm thu nhập</small></div></div>
+      </div>
+      <div class="vis-tg">Mục tiêu: <strong>10%</strong> trường HCMC đạt Mức Độ 3 · Cam kết đồng hành 20 năm</div>
+    </div>
+
   </div>
-  <div class="pb"><i data-lucide="zap"></i> Cam kết đồng hành 20 năm · Learneris đầu tư vào hệ sinh thái EMI Việt Nam, không chỉ bán sản phẩm</div>
+  <div class="pb"><i data-lucide="zap"></i> Learneris đầu tư vào hệ sinh thái EMI Việt Nam, không chỉ bán sản phẩm · Chi tiết lộ trình trong cuộc gặp trực tiếp</div>
 </div>
+
 
 <!-- ===== 5. BƯỚC TIẾP THEO ===== -->
 <div class="scr" data-s="5">
