@@ -133,6 +133,11 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .svy-submit:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(13,148,136,0.25)}
 .svy-submit.flash{animation:submitFlash .4s ease}
 @keyframes submitFlash{0%,100%{transform:scale(1)}50%{transform:scale(0.96);filter:brightness(1.2)}}
+.q-dot{width:6px;height:6px;border-radius:50%;background:#e5e7eb;transition:all .25s}
+.q-dot.done{background:var(--grn)}
+.q-dot.cur{background:var(--teal);transform:scale(1.3);box-shadow:0 0 0 2px rgba(13,148,136,0.2)}
+.svy-upload{border:2px dashed var(--t100);background:#f0fdfa;border-radius:8px;padding:16px 10px;text-align:center;transition:all .3s}
+.svy-upload.done{border:2px solid var(--grn);background:var(--g50);border-style:solid}
 .scr.on .card,.scr.on .st{animation:cardIn .4s cubic-bezier(.4,0,.2,1) backwards}
 .scr.on .card:nth-child(2),.scr.on .st:nth-child(2){animation-delay:.06s}
 .scr.on .card:nth-child(3),.scr.on .st:nth-child(3){animation-delay:.12s}
@@ -810,70 +815,145 @@ function detectLevelFromName(name){
   return null;
 }
 
-// === SURVEY DATA (7 criteria × sample question) ===
-const SURVEY_Qs=[
-  {tc:1,tcName:'Môi trường ngôn ngữ',qNum:'Câu 1/3',role:'Hiệu trưởng',roleCls:'r-ht',
-   q:'Mức độ song ngữ trong bảng hiệu, bảng tin của trường?',
-   opts:['A. Chỉ tiếng Việt','B. Dưới 30% song ngữ','C. 30-80% song ngữ','D. 100% song ngữ + chủ đề'],
-   answer:2,score:2},
-  {tc:2,tcName:'Chương trình & Dạy học',qNum:'Câu 1/6',role:'Phó HT Chuyên môn',roleCls:'r-pht',
-   q:'Trường đã thí điểm CLIL cho bao nhiêu môn nội dung?',
-   opts:['A. Chưa thí điểm','B. 1 môn (Toán hoặc KHTN)','C. 2-3 môn','D. ≥4 môn trên mọi khối'],
-   answer:1,score:1},
-  {tc:3,tcName:'Học liệu',qNum:'Câu 1/4',role:'Tổ trưởng EMI',roleCls:'r-tt',
-   q:'Trường có tài liệu CLIL chuẩn cho môn nội dung không?',
-   opts:['A. Chưa có','B. Một số tài liệu tự phát','C. Tài liệu Cambridge/Oxford','D. Bộ tài liệu chuẩn BGDĐT'],
-   answer:1,score:1},
-  {tc:4,tcName:'Số hóa & AI',qNum:'Câu 1/5',role:'Cán bộ CNTT',roleCls:'r-it',
-   q:'Trường sử dụng nền tảng công nghệ nào cho EMI?',
-   opts:['A. Chưa có LMS','B. LMS miễn phí (Google Classroom)','C. LMS chuyên dụng','D. Đa nền tảng + AI tích hợp'],
-   answer:3,score:3},
-  {tc:5,tcName:'Đội ngũ',qNum:'Câu 1/7',role:'Hiệu trưởng',roleCls:'r-ht',
-   q:'Tỷ lệ giáo viên đạt trình độ CEFR B2 trở lên?',
-   opts:['A. Dưới 20%','B. 20-40%','C. 40-70%','D. Trên 70%'],
-   answer:1,score:1},
-  {tc:6,tcName:'Hợp tác quốc tế',qNum:'Câu 1/3',role:'Hiệu trưởng',roleCls:'r-ht',
-   q:'Trường có đối tác nước ngoài hoặc chương trình trao đổi?',
-   opts:['A. Chưa có','B. Đang xây dựng','C. 1-2 đối tác','D. ≥3 đối tác, trao đổi thường xuyên'],
-   answer:0,score:0},
-  {tc:7,tcName:'Nghiên cứu khoa học & công nghệ',qNum:'Câu 1/2',role:'Tổ trưởng EMI',roleCls:'r-tt',
-   q:'Trường có dự án nghiên cứu liên quan đến EMI/CLIL?',
-   opts:['A. Chưa có','B. 1 dự án cá nhân giáo viên','C. Dự án cấp trường','D. Công bố quốc tế'],
-   answer:1,score:1}
+// === SURVEY DATA (7 criteria × multiple questions each) ===
+const SURVEY_DATA=[
+  {tc:1,tcName:'Môi trường ngôn ngữ',role:'Hiệu trưởng',roleCls:'r-ht',score:2,
+   qs:[
+     {q:'Mức độ song ngữ trong bảng hiệu, bảng tin của trường?',
+      opts:['Chỉ tiếng Việt','Dưới 30% song ngữ','30-80% song ngữ','100% song ngữ + chủ đề'],answer:2},
+     {q:'Hoạt động ngoại khóa có sử dụng tiếng Anh không?',
+      opts:['Không bao giờ','Vài sự kiện mỗi năm','Hàng tháng','Hàng tuần'],answer:1},
+     {q:'Truyền thông nội bộ (email, thông báo) có song ngữ?',
+      opts:['Không','Tự nguyện','Bắt buộc một phần','Bắt buộc toàn bộ'],answer:2}
+   ]},
+  {tc:2,tcName:'Chương trình & Dạy học',role:'Phó HT Chuyên môn',roleCls:'r-pht',score:1,
+   qs:[
+     {q:'Trường đã thí điểm CLIL cho bao nhiêu môn nội dung?',
+      opts:['Chưa thí điểm','1 môn (Toán hoặc KHTN)','2-3 môn','≥4 môn trên mọi khối'],answer:1},
+     {q:'Tỷ lệ tiếng Anh trong giờ học CLIL trung bình?',
+      opts:['0-20%','20-40%','40-70%','Trên 70%'],answer:1}
+   ]},
+  {tc:3,tcName:'Học liệu',role:'Tổ trưởng EMI',roleCls:'r-tt',score:1,
+   qs:[
+     {q:'Nguồn tài liệu CLIL hiện đang sử dụng?',
+      opts:['Chưa có','Tự soạn, chưa chuẩn hóa','Cambridge / Oxford','Bộ chuẩn BGDĐT'],answer:1},
+     {q:'Tải lên mẫu giáo án CLIL tiêu biểu của trường:',type:'upload',
+      fileName:'giao_an_CLIL_Toan_L7_2026.pdf',fileSize:'2.4 MB'}
+   ]},
+  {tc:4,tcName:'Số hóa & AI',role:'Cán bộ CNTT',roleCls:'r-it',score:3,
+   qs:[
+     {q:'Nền tảng LMS hiện đang sử dụng cho EMI?',
+      opts:['Chưa có LMS','Miễn phí (Google Classroom)','LMS chuyên dụng','Đa nền tảng + AI tích hợp'],answer:3},
+     {q:'Tỷ lệ phòng học có hạ tầng CNTT đầy đủ?',
+      opts:['Dưới 30%','30-60%','60-90%','100% + thiết bị hiện đại'],answer:2}
+   ]},
+  {tc:5,tcName:'Đội ngũ',role:'Hiệu trưởng',roleCls:'r-ht',score:1,
+   qs:[
+     {q:'Tỷ lệ giáo viên đạt trình độ CEFR B2 trở lên?',
+      opts:['Dưới 20%','20-40%','40-70%','Trên 70%'],answer:1},
+     {q:'Số giáo viên đã hoàn thành chứng chỉ CLIL?',
+      opts:['0 người','1-5 người','6-15 người','Trên 15 người'],answer:1},
+     {q:'Tải lên danh sách giáo viên kèm chứng chỉ CEFR:',type:'upload',
+      fileName:'danh_sach_GV_CEFR_2026.xlsx',fileSize:'156 KB'}
+   ]},
+  {tc:6,tcName:'Hợp tác quốc tế',role:'Hiệu trưởng',roleCls:'r-ht',score:0,
+   qs:[
+     {q:'Trường có đối tác nước ngoài hoặc chương trình trao đổi?',
+      opts:['Chưa có','Đang xây dựng','1-2 đối tác','≥3 đối tác, trao đổi thường xuyên'],answer:0},
+     {q:'Số hoạt động giao lưu quốc tế trong năm học gần nhất?',
+      opts:['0','1-2','3-5','Trên 5'],answer:0}
+   ]},
+  {tc:7,tcName:'Nghiên cứu khoa học & công nghệ',role:'Tổ trưởng EMI',roleCls:'r-tt',score:1,
+   qs:[
+     {q:'Trường có dự án nghiên cứu liên quan đến EMI/CLIL?',
+      opts:['Chưa có','1 dự án cá nhân giáo viên','Dự án cấp trường','Công bố quốc tế'],answer:1},
+     {q:'Số bài báo khoa học giáo dục được xuất bản (3 năm qua)?',
+      opts:['0','1-2','3-5','Trên 5'],answer:1}
+   ]}
 ];
 
-function showSurveyQuestion(i){
-  const q=SURVEY_Qs[i];if(!q)return;
+// Show a specific question (qIdx) within a criterion (criterionIdx)
+function showSurveyQuestion(criterionIdx,qIdx){
+  const c=SURVEY_DATA[criterionIdx];if(!c)return;
+  const q=c.qs[qIdx];if(!q)return;
   document.getElementById('svyFormEmpty').style.display='none';
   document.getElementById('svyFormContent').style.display='block';
   document.getElementById('svyFormDone').style.display='none';
-  document.getElementById('svyFormSubmit').style.display='inline-flex';
-  document.getElementById('svyFormTc').textContent='Tiêu chí '+q.tc;
-  document.getElementById('svyFormQnum').textContent=q.qNum;
+  const submitBtn=document.getElementById('svyFormSubmit');
+  submitBtn.style.display='inline-flex';
+  const isLast=qIdx===c.qs.length-1;
+  submitBtn.innerHTML=isLast
+    ?'<i data-lucide="send" style="width:11px;height:11px"></i> Nộp khảo sát'
+    :'<i data-lucide="arrow-right" style="width:11px;height:11px"></i> Câu kế tiếp';
+  submitBtn.dataset.last=isLast?'1':'0';
+  document.getElementById('svyFormTc').textContent='Tiêu chí '+c.tc;
+  document.getElementById('svyFormQnum').textContent=`Câu ${qIdx+1}/${c.qs.length}`;
   const roleEl=document.getElementById('svyFormRole');
-  roleEl.textContent=q.role;
-  roleEl.className='r-tag '+q.roleCls;
+  roleEl.textContent=c.role;
+  roleEl.className='r-tag '+c.roleCls;
   document.getElementById('svyFormQ').textContent=q.q;
-  document.getElementById('svyFormUrl').textContent=`lms.learneris.com/emi/survey/tieu-chi-${q.tc}`;
+  document.getElementById('svyFormUrl').textContent=`lms.learneris.com/emi/survey/tieu-chi-${c.tc}/cau-${qIdx+1}`;
+  // Progress dots
+  const dots=c.qs.map((_,i)=>`<span class="q-dot${i<qIdx?' done':''}${i===qIdx?' cur':''}"></span>`).join('');
+  let progressEl=document.getElementById('svyFormDots');
+  if(!progressEl){
+    progressEl=document.createElement('div');
+    progressEl.id='svyFormDots';
+    progressEl.style.cssText='display:flex;gap:4px;margin-bottom:8px;justify-content:center';
+    document.getElementById('svyFormQ').parentNode.insertBefore(progressEl,document.getElementById('svyFormQ'));
+  }
+  progressEl.innerHTML=dots;
+  // Options or upload
   const optsEl=document.getElementById('svyFormOpts');
-  optsEl.innerHTML=q.opts.map(o=>`<div class="svy-opt">○ ${o}</div>`).join('');
+  if(q.type==='upload'){
+    optsEl.innerHTML=`
+      <div class="svy-upload" id="svyUploadBox">
+        <i data-lucide="upload-cloud" style="width:22px;height:22px;color:var(--teal);margin-bottom:4px"></i>
+        <p style="font-size:11px;font-weight:600;color:var(--mut)">Kéo thả hoặc bấm để chọn tệp</p>
+        <p style="font-size:10px;color:#94a3b8;margin-top:2px">PDF, DOCX, XLSX — tối đa 10MB</p>
+      </div>`;
+    optsEl.dataset.upload='1';
+    optsEl.dataset.fileName=q.fileName;
+    optsEl.dataset.fileSize=q.fileSize;
+  }else{
+    optsEl.innerHTML=q.opts.map((o,i)=>`<div class="svy-opt">○ <strong>${String.fromCharCode(65+i)}.</strong> ${o}</div>`).join('');
+    optsEl.dataset.upload='';
+  }
+  lucide.createIcons();
 }
 
-function answerSurveyQuestion(i){
-  const q=SURVEY_Qs[i];if(!q)return;
-  const opts=document.querySelectorAll('#svyFormOpts .svy-opt');
-  const chosen=opts[q.answer];
-  if(chosen){chosen.classList.add('sel');chosen.textContent='● '+q.opts[q.answer].substring(3);}
+function answerSurveyQuestion(criterionIdx,qIdx){
+  const c=SURVEY_DATA[criterionIdx];if(!c)return;
+  const q=c.qs[qIdx];if(!q)return;
+  if(q.type==='upload'){
+    const box=document.getElementById('svyUploadBox');
+    if(box){
+      box.innerHTML=`
+        <i data-lucide="file-check" style="width:22px;height:22px;color:var(--grn);margin-bottom:4px"></i>
+        <p style="font-size:11px;font-weight:700;color:var(--grn)">${q.fileName}</p>
+        <p style="font-size:10px;color:var(--mut);margin-top:2px">${q.fileSize} · đã tải lên</p>`;
+      box.classList.add('done');
+      lucide.createIcons();
+    }
+  }else{
+    const opts=document.querySelectorAll('#svyFormOpts .svy-opt');
+    const chosen=opts[q.answer];
+    if(chosen){
+      chosen.classList.add('sel');
+      const letter=String.fromCharCode(65+q.answer);
+      chosen.innerHTML=`● <strong>${letter}.</strong> ${q.opts[q.answer]}`;
+    }
+  }
 }
 
-function submitSurveyQuestion(i){
-  const q=SURVEY_Qs[i];if(!q)return;
+function submitSurveyCriterion(criterionIdx){
+  const c=SURVEY_DATA[criterionIdx];if(!c)return;
   const btn=document.getElementById('svyFormSubmit');
   btn.classList.add('flash');
   setTimeout(()=>{
     btn.style.display='none';
     const done=document.getElementById('svyFormDone');
-    document.getElementById('svyFormScore').textContent=q.score;
+    document.getElementById('svyFormScore').textContent=c.score;
     done.style.display='block';
     lucide.createIcons();
   },400);
@@ -1043,28 +1123,38 @@ function runScreenAnim(n,scr){
       break;}
     case 3:{
       resetSurveyState();
-      // Sequential survey animation: for each of 7 criteria
-      // click row → show question → highlight answer → submit → mark done → next
-      const STEP=1400; // ms per criterion
+      // Sequential survey: for each of 7 criteria, iterate through its questions
+      // Click row → Q1 → answer → Q2 → answer → ... → submit → row done → next
+      const Q_TIME=800; // ms per question (show + answer + transition)
+      const SUBMIT_TIME=350;
+      const ROW_DONE_TIME=250;
+      const INTER_ROW=250;
       const START=600;
-      for(let i=0;i<7;i++){
+      let t=START;
+      SURVEY_DATA.forEach((c,i)=>{
         const rowN=i+1;
-        const t0=START+i*STEP;
-        // T+0: move cursor to row
-        setTimeout(()=>moveCursorToRow(rowN),t0);
-        // T+350: click pulse + activate row
-        setTimeout(()=>{pulseCursor();highlightRow(rowN,true);},t0+350);
-        // T+500: show question on right
-        setTimeout(()=>{showSurveyQuestion(i);lucide.createIcons();},t0+500);
-        // T+850: select answer
-        setTimeout(()=>answerSurveyQuestion(i),t0+850);
-        // T+1100: submit
-        setTimeout(()=>submitSurveyQuestion(i),t0+1100);
-        // T+1300: mark row done, update progress
-        setTimeout(()=>{markRowDone(rowN);updateSvyProgress(rowN);},t0+1300);
-      }
-      // After all 7: fade survey form → show radar result panel
-      const afterAll=START+7*STEP+200;
+        // Move cursor to row
+        setTimeout(()=>moveCursorToRow(rowN),t);
+        t+=350;
+        // Click pulse + activate row
+        setTimeout(()=>{pulseCursor();highlightRow(rowN,true);},t);
+        t+=100;
+        // Iterate through each question
+        c.qs.forEach((_,qIdx)=>{
+          setTimeout(()=>showSurveyQuestion(i,qIdx),t);
+          t+=300;
+          setTimeout(()=>answerSurveyQuestion(i,qIdx),t);
+          t+=Q_TIME-300;
+        });
+        // Submit
+        setTimeout(()=>submitSurveyCriterion(i),t);
+        t+=SUBMIT_TIME;
+        // Mark row done
+        setTimeout(()=>{markRowDone(rowN);updateSvyProgress(rowN);},t);
+        t+=ROW_DONE_TIME+INTER_ROW;
+      });
+      // After all criteria: fade survey form → show radar result panel
+      const afterAll=t+100;
       setTimeout(()=>{
         document.getElementById('svyFormPanel').classList.add('fade-out');
         document.getElementById('svyCursor').classList.remove('on');
