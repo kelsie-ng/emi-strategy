@@ -1042,6 +1042,25 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
   .bchrome{border-radius:6px}
   .bchrome-bar{padding:4px 8px}
 
+  /* Survey mockup (NV 02) — fit narrow panel */
+  .mk-asmt-live-demo{grid-template-columns:1fr!important;gap:6px}
+  .mock-browser{border-radius:8px}
+  .mock-bar{padding:4px 8px;gap:4px}
+  .mock-url{font-size:8px}
+  .mock-dot{width:5px;height:5px}
+  .mock-body{padding:8px 10px!important}
+  .svy-tbl{font-size:9px}
+  .svy-tbl thead th{padding:3px 4px;font-size:7px}
+  .svy-tbl tbody td{padding:4px 3px}
+  .svy-tbl .wt{font-size:9px}
+  .r-tag{font-size:7px;padding:1px 4px}
+  .svy-cursor{width:14px;height:14px}
+  .svy-cursor i[data-lucide]{width:14px;height:14px}
+  #svyFormPanel .mock-body,#svyResultPanel .mock-body{min-height:160px!important}
+  .svy-submit{font-size:10px;padding:5px 10px}
+  .svy-opt{font-size:10px;padding:4px 6px}
+  .svy-upload{padding:8px}
+
   /* FAQ items */
   .faq-q{font-size:12px;padding:8px 10px}
   .faq-a{padding:8px 10px}
@@ -1146,7 +1165,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
       <div class="exec-p-ic" style="background:var(--p50);color:var(--pur)"><i data-lucide="cpu"></i></div>
       <div class="exec-p-body">
         <strong>Tối ưu cho giáo dục Việt Nam</strong>
-        <p>14+ công cụ AI chuyên biệt · Prompt + RAG trên ngữ liệu SGK · Khung CLIL 4C song ngữ Việt-Anh</p>
+        <p>14+ công cụ AI chuyên biệt · Căn theo Khung chương trình GDPT 2018 · Khung CLIL 4C song ngữ Việt-Anh</p>
       </div>
     </div>
     <div class="exec-pillar">
@@ -1240,7 +1259,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
     <div class="cta-card cta-primary">
       <div class="cta-badge">Đề xuất chính</div>
       <div class="cta-hd"><div class="cta-n">1</div><h3>Đặt nền tảng diện rộng</h3></div>
-      <p>(a) <strong>Mass EMI Readiness Survey</strong> tại 30 trường THCS do Sở chỉ định — Sở có dataset baseline (~1.500 GV) cho báo cáo 2030.<br>(b) <strong>Mass PD enrollment</strong> — mở Learneris micro-modules CLIL cho toàn bộ GV THCS các trường tham gia.<br>(c) Studio + AI apps sẵn có cho trường nào muốn tự tạo nội dung CLIL.</p>
+      <p>(a) <strong>Mass EMI Readiness Survey</strong> tại 30 trường THCS do Sở chỉ định — Sở có dataset baseline (~1.500 GV) cho báo cáo 2030.<br>(b) <strong>Chuẩn hoá 100% nội dung CLIL bằng AI</strong> — Studio + AI apps tạo nội dung CLIL với nhiều mức % tiếng Anh tuỳ chỉnh theo trình độ GV & HS. <em>Sản phẩm sẵn sàng triển khai ngay.</em><br>(c) <strong>PD cho giáo viên</strong> — mở micro-modules bồi dưỡng CLIL sau khi nội dung đã có base chuẩn hoá.</p>
       <div class="cta-note">Dùng sản phẩm trưởng thành · Triển khai nhanh · Rủi ro thấp</div>
     </div>
     <div class="cta-card">
@@ -1892,33 +1911,31 @@ const NV_DATA=[
        <div class="mk-clil-export mk-clil-anim" data-step="4"><i data-lucide="download" style="width:10px;height:10px"></i> DOCX · PDF · Google Slides</div>
      </div>
    </div>`},
-  {num:'05',task:'Đổi mới phương pháp dạy học, thi, kiểm tra, đánh giá',src:'QĐ 2371 · Mục III.5 — Đổi mới phương pháp dạy học',
-   owner:'learneris',badge:'★ Learneris',name:'AI Đánh giá Formative + Lộ trình Học Cá nhân hóa (đa môn)',
-   mech:'EMI là dạy <strong>nội dung môn học</strong> (Toán, KHTN, Lý, Hóa…) bằng tiếng Anh — không phải dạy tiếng Anh. Learneris hỗ trợ <strong>đổi mới PPDH &amp; đánh giá đa môn</strong>:<br>▸ <strong>AI tutor đa môn</strong> — HS hỏi nội dung môn học bằng song ngữ, AI giải thích theo chuẩn SGK<br>▸ <strong>Đánh giá formative tự động</strong> — chấm rubric song ngữ theo 3 chiều: Content / Language / Communication<br>▸ <strong>Adaptive learning path</strong> (Learneris Adapt) — tự điều chỉnh độ khó theo năng lực từng HS qua các môn nội dung<em>Chuyên môn TEFL/ESL (giảng dạy ngôn ngữ chuyên sâu) thuộc về British Council, Cambridge, các đơn vị ngoại ngữ chuyên ngành. Learneris bổ sung công cụ AI cho việc dạy &amp; đánh giá nội dung môn học bằng tiếng Anh.</em>',
+  {num:'05',task:'Đổi mới phương pháp dạy học, thi, kiểm tra, đánh giá',src:'QĐ 2371 · Mục III.5.b — "Đánh giá đa dạng, linh hoạt… thúc đẩy dạy học bằng tiếng Anh gắn với môi trường sử dụng thực tế"',
+   owner:'learneris',badge:'★ Learneris',name:'AI Đánh giá Vấn đáp + Formative (đa môn)',
+   mech:'<strong>Mục III.5.b</strong> yêu cầu đánh giá <strong>đa dạng, linh hoạt, gắn thực tế</strong> — Learneris thay thế MCQ truyền thống bằng:<br>▸ <strong>Đánh giá vấn đáp với AI</strong> (text hoặc voice) — HS giải thích nội dung môn học bằng tiếng Anh, AI đánh giá khả năng diễn đạt thực tế thay vì chọn A/B/C/D<br>▸ <strong>Formative assessment tự động</strong> — rubric song ngữ theo 3 chiều: Content / Language / Communication<br>▸ <strong>Báo cáo tiến trình</strong> — GV thấy rõ HS nào cần hỗ trợ nội dung, HS nào cần hỗ trợ ngôn ngữ<em>Chuyên môn TEFL/ESL thuộc về British Council, Cambridge, các đơn vị chuyên ngành. Learneris bổ sung công cụ AI cho đánh giá nội dung môn học bằng tiếng Anh.</em>',
    mockup:`<div class="mk-grid mk-grid-2">
      <div class="mk-card mk-mathtutor">
-       <div class="mk-mt-hd"><i data-lucide="bot" style="width:11px;height:11px"></i> AI TUTOR ĐA MÔN · <em>HS hỏi nội dung môn · AI giải song ngữ</em></div>
+       <div class="mk-mt-hd"><i data-lucide="mic" style="width:11px;height:11px"></i> ĐÁNH GIÁ VẤN ĐÁP AI · <em>HS giải thích · AI chấm</em></div>
        <div class="mk-mt-chat">
-         <div class="mk-mt-bub mk-mt-user">How do I solve <strong>2x + 3 = 7</strong>?</div>
-         <div class="mk-mt-bub mk-mt-ai">
-           <strong>Step 1:</strong> 2x = 7 − 3 = 4<br>
-           <strong>Step 2:</strong> x = 2<br>
-           <em>Mẹo: Cùng phép tính ở cả hai vế!</em>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px"><strong>AI:</strong> Explain why plants need sunlight to grow. Use at least 2 scientific terms.</div>
+         <div class="mk-mt-bub mk-mt-user">Plants need sunlight for <strong>photosynthesis</strong>. Light energy converts CO₂ and water into <strong>glucose</strong>…</div>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px">
+           <i data-lucide="check-circle" style="width:10px;height:10px;color:var(--grn)"></i> <strong>Good!</strong> 2 terms used correctly.<br>
+           <em>Try adding: What happens without sunlight?</em>
          </div>
-         <div class="mk-mt-bub mk-mt-user">Why does Newton's 2nd law use F=ma?</div>
        </div>
-       <div class="mk-mt-rubric"><strong>AI rubric song ngữ:</strong> Content 4/5 · Language 3/5 · Communication 5/5</div>
+       <div class="mk-mt-rubric"><strong>AI rubric:</strong> Content 4/5 · Language 3/5 · Communication 5/5</div>
      </div>
      <div class="mk-card mk-adapt-path">
-       <div class="mk-ap-hd"><i data-lucide="trending-up" style="width:11px;height:11px"></i> LỘ TRÌNH HỌC CÁ NHÂN HÓA · <em>Adaptive Path</em></div>
-       <div class="mk-ap-student">HS · Nguyễn Minh An · Toán 7</div>
+       <div class="mk-ap-hd"><i data-lucide="bar-chart-3" style="width:11px;height:11px"></i> BÁO CÁO GV · <em>Content vs Language gaps</em></div>
+       <div class="mk-ap-student">Lớp 7A · KHTN bằng tiếng Anh · 32 HS</div>
        <div class="mk-ap-track">
-         <div class="mk-ap-step mk-ap-done"><span>1</span>Khái niệm phương trình<small>✓ Đạt 90%</small></div>
-         <div class="mk-ap-step mk-ap-done"><span>2</span>Phương trình bậc 1<small>✓ Đạt 75%</small></div>
-         <div class="mk-ap-step mk-ap-curr"><span>3</span>Bài toán có lời văn<small>● Đang học · AI tăng độ khó</small></div>
-         <div class="mk-ap-step"><span>4</span>Phương trình &amp; bất đẳng thức<small>Đề xuất tiếp theo</small></div>
+         <div class="mk-ap-step mk-ap-done"><span style="font-size:9px">18</span>Nội dung tốt + Ngôn ngữ tốt<small style="color:var(--grn)">✓ Đạt cả hai</small></div>
+         <div class="mk-ap-step mk-ap-curr"><span style="font-size:9px">9</span>Nội dung tốt + Ngôn ngữ yếu<small style="color:var(--amb)">● Cần hỗ trợ diễn đạt</small></div>
+         <div class="mk-ap-step"><span style="font-size:9px">5</span>Nội dung yếu + Ngôn ngữ yếu<small style="color:var(--red)">Cần can thiệp sớm</small></div>
        </div>
-       <div class="mk-ap-note"><i data-lucide="sparkles" style="width:9px;height:9px"></i> AI đề xuất bài tập sửa các điểm yếu cụ thể của An</div>
+       <div class="mk-ap-note"><i data-lucide="sparkles" style="width:9px;height:9px"></i> GV biết chính xác HS nào cần hỗ trợ nội dung, HS nào cần hỗ trợ ngôn ngữ</div>
      </div>
    </div>`},
   {num:'06',task:'Ứng dụng CNTT, AI, tăng cường CSVC',src:'QĐ 2371 · Mục III.6.a (trích nguyên văn): "Đầu tư phát triển các nền tảng học tập số, ứng dụng trí tuệ nhân tạo (AI) có khả năng phân tích trình độ, nhu cầu của người học"',
@@ -2117,15 +2134,15 @@ const INTRO_DATA=[
       <div class="int-trust-card int-trust-primary">
         <div class="int-trust-ic"><i data-lucide="check-circle"></i></div>
         <div>
-          <strong>Học cùng AI THCS — Sở GD&ĐT TP.HCM đã thẩm định</strong>
-          <small>Chương trình Học cùng AI <strong>khối THCS</strong> đã được Sở GD&ĐT TP.HCM thẩm định chi tiết và xác nhận phù hợp</small>
+          <strong>Học cùng AI — Sở GD&ĐT TP.HCM thẩm định</strong>
+          <small><strong>THCS</strong>: đã thẩm định chi tiết và xác nhận phù hợp · <strong>Tiểu học & THPT</strong>: đang trong quá trình thẩm định với Sở</small>
         </div>
       </div>
       <div class="int-trust-card">
-        <div class="int-trust-ic"><i data-lucide="file-check"></i></div>
+        <div class="int-trust-ic"><i data-lucide="landmark"></i></div>
         <div>
-          <strong>Học cùng AI Tiểu học & THPT — Đang thẩm định</strong>
-          <small>Chương trình Học cùng AI cho khối Tiểu học và THPT đang trong quá trình thẩm định chi tiết với Sở</small>
+          <strong>Đề án Sở GD&ĐT TPHCM 2026-2035</strong>
+          <small>TPHCM là địa phương đầu tiên triển khai Đề án tiếng Anh ngôn ngữ thứ hai — Learneris căn chỉnh sẵn theo lộ trình thí điểm của Sở</small>
         </div>
       </div>
     </div>
