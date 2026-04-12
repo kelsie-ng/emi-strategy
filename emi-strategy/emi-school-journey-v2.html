@@ -1912,30 +1912,29 @@ const NV_DATA=[
      </div>
    </div>`},
   {num:'05',task:'Đổi mới phương pháp dạy học, thi, kiểm tra, đánh giá',src:'QĐ 2371 · Mục III.5.b — "Đánh giá đa dạng, linh hoạt… thúc đẩy dạy học bằng tiếng Anh gắn với môi trường sử dụng thực tế"',
-   owner:'learneris',badge:'★ Learneris',name:'AI Đánh giá Vấn đáp + Formative (đa môn)',
-   mech:'<strong>Mục III.5.b</strong> yêu cầu đánh giá <strong>đa dạng, linh hoạt, gắn thực tế</strong> — Learneris thay thế MCQ truyền thống bằng:<br>▸ <strong>Đánh giá vấn đáp với AI</strong> (text hoặc voice) — HS giải thích nội dung môn học bằng tiếng Anh, AI đánh giá khả năng diễn đạt thực tế thay vì chọn A/B/C/D<br>▸ <strong>Formative assessment tự động</strong> — rubric song ngữ theo 3 chiều: Content / Language / Communication<br>▸ <strong>Báo cáo tiến trình</strong> — GV thấy rõ HS nào cần hỗ trợ nội dung, HS nào cần hỗ trợ ngôn ngữ<em>Chuyên môn TEFL/ESL thuộc về British Council, Cambridge, các đơn vị chuyên ngành. Learneris bổ sung công cụ AI cho đánh giá nội dung môn học bằng tiếng Anh.</em>',
+   owner:'learneris',badge:'★ Learneris',name:'AI Assessment đa dạng + Adaptive Diagnostic',
+   mech:'<strong>Mục III.5.b</strong> yêu cầu đánh giá <strong>đa dạng, linh hoạt, gắn thực tế</strong>. Learneris đã có sẵn:<br>▸ <strong>AI grading free response</strong> — HS viết câu trả lời tự do, AI chấm nội dung + ngôn ngữ<br>▸ <strong>Adaptive diagnostic</strong> (adapt.learneris.com) — bài kiểm tra tự điều chỉnh độ khó theo câu trả lời trước, nhiều loại câu hỏi kể cả free response<br>▸ <strong>Chat-based assessment</strong> — HS chat với AI về nội dung môn học, AI khác đánh giá<br>▸ <strong>Writing eval + Speaking eval</strong> — chấm bài viết và nói bằng AI<em>Tất cả sản phẩm đã sẵn sàng, đang hoạt động.</em>',
    mockup:`<div class="mk-grid mk-grid-2">
      <div class="mk-card mk-mathtutor">
-       <div class="mk-mt-hd"><i data-lucide="mic" style="width:11px;height:11px"></i> ĐÁNH GIÁ VẤN ĐÁP AI · <em>HS giải thích · AI chấm</em></div>
+       <div class="mk-mt-hd"><i data-lucide="message-square" style="width:11px;height:11px"></i> ADAPTIVE DIAGNOSTIC · <em>adapt.learneris.com</em></div>
        <div class="mk-mt-chat">
-         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px"><strong>AI:</strong> Explain why plants need sunlight to grow. Use at least 2 scientific terms.</div>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px"><strong>Q1:</strong> Explain why plants need sunlight to grow.</div>
          <div class="mk-mt-bub mk-mt-user">Plants need sunlight for <strong>photosynthesis</strong>. Light energy converts CO₂ and water into <strong>glucose</strong>…</div>
-         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px">
-           <i data-lucide="check-circle" style="width:10px;height:10px;color:var(--grn)"></i> <strong>Good!</strong> 2 terms used correctly.<br>
-           <em>Try adding: What happens without sunlight?</em>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px;border-left:2px solid var(--grn);padding-left:6px">
+           <i data-lucide="check-circle" style="width:10px;height:10px;color:var(--grn)"></i> <strong>Correct</strong> · AI tăng độ khó →
          </div>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px"><strong>Q2:</strong> Compare aerobic and anaerobic respiration. Which produces more ATP?</div>
        </div>
-       <div class="mk-mt-rubric"><strong>AI rubric:</strong> Content 4/5 · Language 3/5 · Communication 5/5</div>
+       <div class="mk-mt-rubric"><strong>Free response + Adaptive:</strong> AI chấm → điều chỉnh câu tiếp</div>
      </div>
-     <div class="mk-card mk-adapt-path">
-       <div class="mk-ap-hd"><i data-lucide="bar-chart-3" style="width:11px;height:11px"></i> BÁO CÁO GV · <em>Content vs Language gaps</em></div>
-       <div class="mk-ap-student">Lớp 7A · KHTN bằng tiếng Anh · 32 HS</div>
-       <div class="mk-ap-track">
-         <div class="mk-ap-step mk-ap-done"><span style="font-size:9px">18</span>Nội dung tốt + Ngôn ngữ tốt<small style="color:var(--grn)">✓ Đạt cả hai</small></div>
-         <div class="mk-ap-step mk-ap-curr"><span style="font-size:9px">9</span>Nội dung tốt + Ngôn ngữ yếu<small style="color:var(--amb)">● Cần hỗ trợ diễn đạt</small></div>
-         <div class="mk-ap-step"><span style="font-size:9px">5</span>Nội dung yếu + Ngôn ngữ yếu<small style="color:var(--red)">Cần can thiệp sớm</small></div>
+     <div class="mk-card mk-mathtutor">
+       <div class="mk-mt-hd"><i data-lucide="bot" style="width:11px;height:11px"></i> CHAT ASSESSMENT · <em>HS chat · AI khác đánh giá</em></div>
+       <div class="mk-mt-chat">
+         <div class="mk-mt-bub mk-mt-user">I think friction makes objects slow down because…</div>
+         <div class="mk-mt-bub mk-mt-ai" style="font-size:10px"><strong>AI Tutor:</strong> Good start! Can you explain what happens to the kinetic energy?</div>
+         <div class="mk-mt-bub mk-mt-user">The kinetic energy converts to <strong>thermal energy</strong> due to friction</div>
        </div>
-       <div class="mk-ap-note"><i data-lucide="sparkles" style="width:9px;height:9px"></i> GV biết chính xác HS nào cần hỗ trợ nội dung, HS nào cần hỗ trợ ngôn ngữ</div>
+       <div class="mk-mt-rubric"><strong>AI Evaluator:</strong> Content ✓ · Reasoning ✓ · English clarity: B1+</div>
      </div>
    </div>`},
   {num:'06',task:'Ứng dụng CNTT, AI, tăng cường CSVC',src:'QĐ 2371 · Mục III.6.a (trích nguyên văn): "Đầu tư phát triển các nền tảng học tập số, ứng dụng trí tuệ nhân tạo (AI) có khả năng phân tích trình độ, nhu cầu của người học"',
