@@ -40,10 +40,10 @@ Chúng em đề xuất tiếp cận **diện rộng** ngay từ đầu — tận
 
 **Hướng A — Đặt nền tảng diện rộng (đề xuất chính):**
 
-(a) **Mass EMI Readiness Survey** tại N trường THCS do Sở chỉ định
-- Sở có **dataset baseline toàn hệ thống** để báo cáo năm 2026 và lộ trình 2030 lên MOET
+(a) **Mass EMI Readiness Survey** tại 30 trường THCS do Sở chỉ định
+- Sở có **dataset baseline** (~1.500 GV, ~30 trường) — cỡ mẫu đủ cho báo cáo năm 2026 và lộ trình 2030 lên MOET
 - Triển khai nhanh, không cần custom hóa từng trường
-- Số lượng trường tham gia do Sở quyết định
+- Danh sách trường tham gia do Sở quyết định
 
 (b) **Mass PD enrollment cho GV THCS**
 - Mở Learneris **micro-modules CLIL** (Phương pháp CLIL · Tiếng Anh lớp học · Môn nội dung CLIL) cho toàn bộ GV THCS các trường tham gia survey
