@@ -2237,6 +2237,12 @@ function animateNvAssessment(){
   if(!document.getElementById('svyTbody'))return;
   resetSurveyState();
   setNvNext(false);  // block Next while the demo runs (~24s)
+  // On mobile, scroll the demo into view so both the cursor table AND the
+  // question/result panel are visible together when the animation kicks off
+  if(window.matchMedia('(max-width:768px)').matches){
+    const mockup=document.querySelector('.mk-asmt-live-demo');
+    if(mockup)mockup.scrollIntoView({behavior:'smooth',block:'start'});
+  }
   const Q_TIME=800,SUBMIT_TIME=350,ROW_DONE_TIME=250,INTER_ROW=250,START=500;
   let t=START;
   SURVEY_DATA.forEach((c,i)=>{
