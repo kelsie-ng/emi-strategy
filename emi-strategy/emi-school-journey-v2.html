@@ -374,6 +374,7 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .nv-p-mech strong{color:var(--teal);font-weight:700}
 .nv-panel.partner .nv-p-mech strong{color:#475569}
 .nv-p-mech em{font-style:italic;color:var(--mut);font-size:11px;display:block;margin-top:6px}
+.nv-p-mech-toggle{display:none}
 .nv-p-arrow{display:inline-block;color:var(--teal);font-weight:900;margin:0 2px}
 /* Overview panel (sub-step 0 of screen 3) */
 .nv-overview{justify-content:flex-start}
@@ -609,7 +610,14 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .mk-cs-stats strong{color:var(--teal);font-size:11px;font-weight:900}
 .mk-cs-cert{display:flex;align-items:center;justify-content:center;gap:4px;padding:5px;background:linear-gradient(135deg,var(--a50),#fff);border:1px dashed var(--amb);border-radius:4px;font-size:9px;font-weight:700;color:#92400e}
 .mk-cs-ftr{padding:5px 8px;font-size:8px;color:var(--mut);text-align:center;display:flex;align-items:center;justify-content:center;gap:4px}
-@media(max-width:768px){.nv-layout{grid-template-columns:180px 1fr}.nv-tab.active::after{display:none}.nv-p-src{padding-left:0}}
+@media(max-width:768px){.nv-layout{grid-template-columns:180px 1fr}.nv-tab.active::after{display:none}.nv-p-src{padding-left:0}
+  .nv-p-mech-block{margin:6px 0 4px}
+  .nv-p-mech-toggle{display:flex;align-items:center;gap:6px;width:100%;padding:7px 10px;background:var(--t50);border:1px solid var(--t100);border-radius:6px;font-size:11px;font-weight:700;color:var(--teal);cursor:pointer;font-family:inherit;text-align:left}
+  .nv-p-mech-toggle i{width:12px;height:12px;transition:transform .2s}
+  .nv-p-mech-block.open > .nv-p-mech-toggle i{transform:rotate(180deg)}
+  .nv-p-mech-block:not(.open) > .nv-p-mech{display:none}
+  .nv-p-mech-block.open > .nv-p-mech{margin-top:6px}
+}
 /* Nested mockups inside right panel */
 .nv-p-mockup{margin-top:14px;padding-top:12px;border-top:1px dashed #e5e7eb}
 .nv-p-mk-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--mut);margin-bottom:8px}
@@ -2058,7 +2066,10 @@ function renderNvPanel(idx){
       <div class="nv-p-bd">${d.badge}</div>
       <div class="nv-p-name">${d.name}</div>
     </div>
-    <div class="nv-p-mech">${d.mech}</div>
+    <div class="nv-p-mech-block">
+      <button class="nv-p-mech-toggle" type="button" onclick="this.parentElement.classList.toggle('open');this.querySelector('.nv-p-mech-toggle-lbl').textContent=this.parentElement.classList.contains('open')?'Ẩn mô tả':'Mô tả chi tiết'"><i data-lucide="chevron-down"></i><span class="nv-p-mech-toggle-lbl">Mô tả chi tiết</span></button>
+      <div class="nv-p-mech">${d.mech}</div>
+    </div>
     ${d.mockup?`<div class="nv-p-mockup"><div class="nv-p-mk-label">▾ Hình dung cụ thể · <em>What it looks like</em></div>${d.mockup}</div>`:''}
   `;
   lucide.createIcons();
@@ -2175,9 +2186,19 @@ document.addEventListener('DOMContentLoaded',()=>{
   selectInt(0);
 });
 
+// Disable/enable the primary "Tiếp Theo" button — used while a NV animation runs.
+// goTo() also resets nb.disabled on every screen change, so this only matters
+// while the user stays on the current screen.
+function setNvNext(enabled){
+  const btn=document.getElementById('nextBtn');
+  if(btn)btn.disabled=!enabled;
+}
+
 let nvIdx=-1;
 function selectNv(idx){
   nvIdx=idx;
+  // Re-enable Next when switching tasks — animation will re-disable if needed
+  setNvNext(true);
   const scr=document.getElementById('nvScreen');
   if(scr){
     if(idx<0){scr.classList.remove('nv-active');}
@@ -2201,6 +2222,7 @@ function animateNvAssessment(){
   // Require all DOM elements to be present (they only exist when NV 02 panel is rendered)
   if(!document.getElementById('svyTbody'))return;
   resetSurveyState();
+  setNvNext(false);  // block Next while the demo runs (~24s)
   const Q_TIME=800,SUBMIT_TIME=350,ROW_DONE_TIME=250,INTER_ROW=250,START=500;
   let t=START;
   SURVEY_DATA.forEach((c,i)=>{
@@ -2239,6 +2261,7 @@ function animateNvAssessment(){
     const scoreEl=result.querySelector('.count-target');
     if(scoreEl)countUp(scoreEl,50,1000,400);
     lucide.createIcons();
+    setNvNext(true);  // animation finished — let user advance
   },afterAll+400);
 }
 
