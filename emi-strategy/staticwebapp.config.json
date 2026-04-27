@@ -11,6 +11,10 @@
     {
       "route": "/demo2",
       "rewrite": "/emi-school-journey-v2.html"
+    },
+    {
+      "route": "/demo3",
+      "rewrite": "/emi-school-journey-v3.html"
     }
   ],
   "navigationFallback": {
